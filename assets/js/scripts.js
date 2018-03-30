@@ -1,5 +1,5 @@
 jQuery(function($) {
-  var $body, $header, $headerWrap, $intro, $logo, $logoSvg, $main, adjustHeader, getTranslate, init, logoObj;
+  var $body, $faders, $header, $headerWrap, $intro, $logo, $logoSvg, $main, adjustHeader, getTranslate, init, logoObj;
   $body = $('body');
   $header = $('header');
   $headerWrap = $('.header-wrap');
@@ -7,45 +7,56 @@ jQuery(function($) {
   $logoSvg = $('header svg');
   $intro = $('#intro');
   $main = $('main');
+  $faders = $main.find('.inner_content');
   init = function() {
     return adjustHeader();
   };
   adjustHeader = function() {
-    var headerHeight, initX, initY, introBottom, introHalf, key, logoWidth, newX, newY, part, percentToHalf, ref, results, scrollY, smallLogoWidth, subFactor, widthDivide;
+    var headerHeight, initX, initY, introBottom, introHalf, key, leftGap, leftWidth, leftWidthPerc, logoWidth, newX, newY, part, ref, results, rightWidth, scrollY, toAlign, toResize, windowWidth;
     scrollY = $(window).scrollTop();
+    windowWidth = $(window).innerWidth();
     introBottom = $intro.innerHeight();
     introHalf = introBottom / 2;
-    percentToHalf = scrollY / introHalf;
+    toAlign = scrollY / introHalf;
+    toResize = toAlign - 1;
     headerHeight = $header.innerHeight();
-    smallLogoWidth = 50;
-    if (percentToHalf >= 1) {
+    leftWidth = $main.find('.left.col').innerWidth();
+    rightWidth = $main.find('.right.col').innerWidth();
+    leftWidthPerc = leftWidth / windowWidth;
+    if (toAlign >= 1) {
       $header.addClass('aligned');
-      logoWidth = smallLogoWidth;
-      if (percentToHalf <= 2) {
-        widthDivide = percentToHalf / 2;
-        subFactor = widthDivide * 100 - smallLogoWidth;
-        logoWidth = 100 - subFactor;
+      if (toResize <= 1) {
+        leftGap = rightWidth * toResize;
+        logoWidth = ((windowWidth - leftGap) / windowWidth) * 100;
+        $headerWrap.css({
+          height: 'auto'
+        });
+        $header.removeClass('fixed');
+        $faders.css({
+          opacity: toResize
+        });
+      } else {
+        logoWidth = (leftWidth / windowWidth) * 100;
+        $headerWrap.css({
+          height: headerHeight
+        });
+        $header.addClass('fixed');
+        $faders.css({
+          opacity: 1
+        });
       }
     } else {
       $header.removeClass('aligned');
       logoWidth = 100;
-    }
-    if (logoWidth === smallLogoWidth) {
-      $headerWrap.css({
-        height: headerHeight
+      $faders.css({
+        opacity: 0
       });
-      $header.addClass('fixed');
-    } else {
-      $headerWrap.css({
-        height: 'auto'
-      });
-      $header.removeClass('fixed');
     }
     $logo.css({
       width: logoWidth + '%'
     });
     if ($header.is('.aligned')) {
-      percentToHalf = 1;
+      toAlign = 1;
     }
     ref = logoObj();
     results = [];
@@ -53,8 +64,8 @@ jQuery(function($) {
       part = ref[key];
       initX = part.x;
       initY = part.y;
-      newY = percentToHalf * -part.y + part.y;
-      newX = percentToHalf * -part.x + part.x;
+      newY = toAlign * -part.y + part.y;
+      newX = toAlign * -part.x + part.x;
       results.push($(part.elem).attr('transform', 'translate(' + newX + ',' + newY + ')'));
     }
     return results;

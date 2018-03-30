@@ -43,6 +43,6 @@
     "gulp:prod": "gulp prod --prod",
     "go": "npm run gulp",
     "prod": "npm run gulp:prod",
-    "ssh": "ssh BijaProject@bijaproject.com"
+    "ssh": "ssh tauyhog3bf1v@107.180.51.81"
   }
 }
