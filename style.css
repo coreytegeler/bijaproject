@@ -1,0 +1,72 @@
+html, body {
+  font-size: 18px;
+  font-weight: normal; }
+  html #intro, body #intro {
+    width: 100%;
+    min-height: 100vh; }
+    html #intro p, body #intro p {
+      margin: 0; }
+  html .row, body .row {
+    width: 100%;
+    margin: auto; }
+  html header, body header {
+    width: 100%;
+    padding: 40px 0;
+    background: white;
+    z-index: 100;
+    position: relative;
+    z-index: 100; }
+    html header .container-fluid, body header .container-fluid {
+      padding: 0; }
+    html header .col-logo, body header .col-logo {
+      width: 100%; }
+      html header .col-logo svg, body header .col-logo svg {
+        width: 100%;
+        height: auto;
+        overflow: visible !important; }
+      @media (max-width: 576px) {
+        html header .col-logo, body header .col-logo {
+          width: 100% !important; } }
+    html header .col-nav, body header .col-nav {
+      display: none !important; }
+      @media (max-width: 576px) {
+        html header .col-nav, body header .col-nav {
+          display: -webkit-box !important;
+          display: flex !important; } }
+      html header .col-nav nav, body header .col-nav nav {
+        height: 100%; }
+        html header .col-nav nav .col-md, body header .col-nav nav .col-md {
+          text-align: center;
+          padding-right: 0; }
+          html header .col-nav nav .col-md:first-child, body header .col-nav nav .col-md:first-child {
+            padding-left: 0; }
+    html header.aligned .col-lg, body header.aligned .col-lg {
+      margin: 0; }
+    html header.fixed, body header.fixed {
+      position: fixed;
+      left: 0;
+      top: 0; }
+      html header.fixed .col-nav, body header.fixed .col-nav {
+        display: block !important; }
+  html main, body main {
+    width: 100%;
+    height: 100vh; }
+    html main .row .col, body main .row .col {
+      padding-top: 40px; }
+      html main .row .col.left, body main .row .col.left {
+        background: #015fff; }
+      html main .row .col.right, body main .row .col.right {
+        background: #ddf6f0; }
+      html main .row .col.links .container, body main .row .col.links .container {
+        width: auto;
+        display: table; }
+      html main .row .col.links strong, body main .row .col.links strong {
+        text-transform: uppercase;
+        color: black;
+        font-size: 10px; }
+      html main .row .col.links a, body main .row .col.links a {
+        display: inline-block;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        margin-bottom: 15px;
+        font-weight: lighter; }
