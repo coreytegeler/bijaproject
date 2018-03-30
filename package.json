@@ -44,5 +44,5 @@
     "go": "npm run gulp",
     "prod": "npm run gulp:prod",
     "ssh": "ssh BijaProject@bijaproject.com"
-  },
+  }
 }
