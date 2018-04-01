@@ -25,18 +25,23 @@ $closing_text = get_field( 'closing_text', $post );
 	<header role="header" class="d-flex align-items-center">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-auto col-sm-12 col-logo">
+				<div class="col-6 col-md-auto col-logo">
 					<?php
 					$logo_svg = get_template_directory_uri() . '/assets/images/logo.svg';
 					echo file_get_contents( $logo_svg );
 					?>
 				</div>
-				<div class="col col-md col-sm-12 col-nav">
+				<div class="col-12 col-md col-nav">
 					<nav class="d-flex align-items-center">
 						<div class="row">
-							<div class="col-4">info@bijaproject.com</div>
-							<div class="col-4">347–294–0653</div>
-							<div class="col-4">Get our newsletter</div>
+							<div class="col col-4">info@bijaproject.com</div>
+							<div class="col col-4">347–294–0653</div>
+							<div class="col col-4">
+								<form>
+									<input type="email" placeholder="Get our newsletter" />
+									<span>Get our newsletter</span>
+								</form>
+							</div>
 						</div>
 					</nav>
 				</div>
@@ -46,14 +51,14 @@ $closing_text = get_field( 'closing_text', $post );
 </div>
 <main role="main">
 	<div class="main-row row h-100">
-		<div class="col col-sm-12 col-md-5 left">
+		<div class="col col-6 col-md-5 left">
 			<div class="inner_content">
 				<div class="container">
 					<h2><?= $links_text; ?></h2>
 				</div>
 			</div>
 		</div>
-		<div class="col col-sm-12 col-md-7 right">
+		<div class="col col-6 col-md-7 right">
 			<div class="inner_content">
 				<div class="row">
 					<div class="container">

@@ -11,15 +11,27 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 49px; }
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 35px; } }
 
 h2 {
   font-size: 35px; }
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 20px; } }
 
 h3 {
   font-size: 20px; }
+  @media (max-width: 576px) {
+    h3 {
+      font-size: 15px; } }
 
 h4 {
   font-size: 15px; }
+  @media (max-width: 576px) {
+    h4 {
+      font-size: 10px; } }
 
 a {
   text-decoration: none;
@@ -58,22 +70,28 @@ p {
 
 header {
   width: 100%;
-  padding: 40px 0;
+  padding: 50px 0;
   background: white;
   z-index: 100;
   position: relative;
   z-index: 100; }
+  @media (max-width: 576px) {
+    header {
+      padding: 10px 0; } }
   header .container-fluid {
     padding: 0; }
+  @media (max-width: 576px) {
+    header .col-logo, header .col-nav {
+      padding: 0 5px;
+      font-size: 10px; }
+      header .col-logo *, header .col-nav * {
+        font-size: 10px; } }
   header .col-logo {
     width: 100%; }
     header .col-logo svg {
       width: 100%;
       height: auto;
       overflow: visible !important; }
-    @media (max-width: 576px) {
-      header .col-logo {
-        width: 100% !important; } }
   header .col-nav {
     display: none !important; }
     @media (max-width: 576px) {
@@ -82,11 +100,34 @@ header {
         display: flex !important; } }
     header .col-nav nav {
       height: 100%; }
-      header .col-nav nav .col-md {
+      header .col-nav nav .col {
         text-align: center;
         padding-right: 0; }
-        header .col-nav nav .col-md:first-child {
-          padding-left: 0; }
+        header .col-nav nav .col:first-of-type {
+          padding: 0; }
+        header .col-nav nav .col:nth-of-type(2) {
+          padding: 0 5px; }
+        header .col-nav nav .col:last-of-type {
+          padding: 0; }
+      header .col-nav nav form {
+        display: table;
+        margin: auto;
+        position: relative; }
+        header .col-nav nav form input[type="email"] {
+          width: 100%;
+          background: white;
+          border: solid black;
+          border-width: 0 0 1px 0;
+          padding: 0;
+          position: absolute;
+          left: 0;
+          top: 0; }
+        header .col-nav nav form span {
+          opacity: 0; }
+      @media (max-width: 576px) {
+        header .col-nav nav {
+          width: 100%;
+          font-size: 15px; } }
   header.aligned .col-lg {
     margin: 0; }
   header.fixed {
@@ -120,6 +161,9 @@ main {
     padding: 0; }
     main .row .col .inner_content {
       padding: 100px 85px; }
+      @media (max-width: 768px) {
+        main .row .col .inner_content {
+          padding: 20px 5px; } }
     main .row .col.left {
       background: #e2edff; }
       main .row .col.left .container {

@@ -9,6 +9,7 @@ $mdWidth: 768px;
 $lgWidth: 992px;
 $xlWidth: 1200px;
 
+$xxsGap: 5px;
 $xsGap: 10px;
 $smGap: 15px;
 $mdGap: 20px;
@@ -16,6 +17,7 @@ $lgGap: 50px;
 $xlGap: 100px;
 
 $baseText: 20px;
+$xsText: 10px;
 $smText: 15px;
 $mdText: 35px;
 $lgText: 49px;
@@ -57,15 +59,27 @@ h1, h2, h3, h4 {
 }
 h1 {
 	font-size: $lgText;
+	@include small {
+	font-size: $mdText;	
+	}
 }
 h2 {
 	font-size: $mdText;
+	@include small {
+	font-size: $baseText;	
+	}
 }
 h3 {
 	font-size: $baseText;
+	@include small {
+	font-size: $smText;	
+	}
 }
 h4 {
 	font-size: $smText;
+	@include small {
+	font-size: $xsText;
+	}
 }
 a {
 	text-decoration: none;
@@ -105,13 +119,25 @@ p {
 }
 header {
 	width: 100%;
-	padding: 40px 0;
+	padding: $lgGap 0;
 	background: white;
 	z-index: 100;
 	position: relative;
 	z-index: 100;
+	@include small {
+		padding: $xsGap 0;
+	}
 	.container-fluid {
 		padding: 0;
+	}
+	.col-logo, .col-nav {
+		@include small {
+			padding: 0 $xxsGap;
+			font-size: $xsText;
+			* {
+				font-size: $xsText;
+			}
+		}
 	}
 	.col-logo {
 		width: 100%;
@@ -119,9 +145,6 @@ header {
 			width: 100%;
 			height: auto;
 			overflow: visible !important;
-		}
-		@include small {
-		  width: 100% !important;
 		}
 	}
 	.col-nav {
@@ -131,12 +154,40 @@ header {
 		}
 		nav {
 			height: 100%;
-			.col-md {
+			.col {
 				text-align: center;
 				padding-right: 0;
-				&:first-child {
-					padding-left: 0;
+				&:first-of-type {
+					padding: 0;
 				}
+				&:nth-of-type(2) {
+					padding: 0 $xxsGap;
+				}
+				&:last-of-type {
+					padding: 0;
+				}
+			}
+			form {
+				display: table;
+				margin: auto;
+				position: relative;
+				input[type="email"] {
+					width: 100%;
+					background: white;
+					border: solid black;
+					border-width: 0 0 1px 0;
+					padding: 0;
+					position: absolute;
+					left: 0;
+					top: 0;
+				}
+				span {
+					opacity: 0;
+				}
+			}
+			@include small {
+				width: 100%;
+				font-size: $smText;
 			}
 		}
 	}
@@ -181,6 +232,9 @@ main {
 			padding: 0;
 			.inner_content {
 				padding: $xlGap #{$xlGap - $smGap};
+				@include medium {
+					padding: $mdGap #{$mdGap - $smGap};
+				}
 			}
 			&.left {
 				background: $lightBlue;
