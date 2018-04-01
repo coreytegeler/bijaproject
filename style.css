@@ -30,7 +30,8 @@ a {
   background-size: 2px 2px;
   background-position: 0 1.3em;
   line-height: 1.4em;
-  font-weight: normal; }
+  font-weight: normal;
+  color: white; }
   a:hover {
     text-decoration: none; }
 
@@ -97,28 +98,28 @@ header {
 
 main {
   width: 100%; }
+  main p:nth-child(3n+1) a {
+    background-image: -webkit-linear-gradient(top, #015fff 50%, #015fff 50%);
+    background-image: -o-linear-gradient(top, #015fff 50%, #015fff 50%);
+    background-image: linear-gradient(to bottom, #015fff 50%, #015fff 50%); }
+    main p:nth-child(3n+1) a:hover {
+      color: #015fff; }
+  main p:nth-child(3n+2) a {
+    background-image: -webkit-linear-gradient(top, #fa453c 50%, #fa453c 50%);
+    background-image: -o-linear-gradient(top, #fa453c 50%, #fa453c 50%);
+    background-image: linear-gradient(to bottom, #fa453c 50%, #fa453c 50%); }
+    main p:nth-child(3n+2) a:hover {
+      color: #fa453c; }
+  main p:nth-child(3n+3) a {
+    background-image: -webkit-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
+    background-image: -o-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
+    background-image: linear-gradient(to bottom, #23cc0e 50%, #23cc0e 50%); }
+    main p:nth-child(3n+3) a:hover {
+      color: #23cc0e; }
   main .row .col {
     padding: 0; }
     main .row .col .inner_content {
       padding: 100px 85px; }
-    main .row .col p:nth-child(3n+1) a {
-      background-image: -webkit-linear-gradient(top, #015fff 50%, #015fff 50%);
-      background-image: -o-linear-gradient(top, #015fff 50%, #015fff 50%);
-      background-image: linear-gradient(to bottom, #015fff 50%, #015fff 50%); }
-      main .row .col p:nth-child(3n+1) a:hover {
-        color: #015fff; }
-    main .row .col p:nth-child(3n+2) a {
-      background-image: -webkit-linear-gradient(top, #fa453c 50%, #fa453c 50%);
-      background-image: -o-linear-gradient(top, #fa453c 50%, #fa453c 50%);
-      background-image: linear-gradient(to bottom, #fa453c 50%, #fa453c 50%); }
-      main .row .col p:nth-child(3n+2) a:hover {
-        color: #fa453c; }
-    main .row .col p:nth-child(3n+3) a {
-      background-image: -webkit-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
-      background-image: -o-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
-      background-image: linear-gradient(to bottom, #23cc0e 50%, #23cc0e 50%); }
-      main .row .col p:nth-child(3n+3) a:hover {
-        color: #23cc0e; }
     main .row .col.left {
       background: #e2edff; }
       main .row .col.left .container {

@@ -1,6 +1,11 @@
 <?php
 global $post;
 get_header(); 
+$links_text = get_field( 'links',  $post );
+$intro_text = get_field( 'intro_text', $post );
+$programs_text = get_field( 'programs_text', $post );
+$community_text = get_field( 'community_text', $post );
+$closing_text = get_field( 'closing_text', $post );
 ?>
 
 <div id="intro" class="d-flex align-items-center">
@@ -44,12 +49,7 @@ get_header();
 		<div class="col col-sm-12 col-md-5 left">
 			<div class="inner_content">
 				<div class="container">
-					<h2>
-						<?php
-						$links_html = get_field( 'links',  $post );
-						echo $links_html;
-						?>
-					</h2>
+					<h2><?= $links_text; ?></h2>
 				</div>
 			</div>
 		</div>
@@ -57,9 +57,7 @@ get_header();
 			<div class="inner_content">
 				<div class="row">
 					<div class="container">
-						<h2><p>
-							Currently serving Brooklyn and the Hudson Valley, The Bija Project invests in communities with programming for people ages 0+
-						</p></h2>
+						<h2><?= $intro_text; ?></h2>
 					</div>
 				</div>
 
@@ -106,18 +104,15 @@ get_header();
 				endif;
 				?>
 
-				<div class="container">
-					<h2><p>
-						Designed to help children and families to manifest their greatest selves, our programs nurture meaningful learning experiences, instill a sense of intellectual independence, and inspire curiosity. Our team is engaged and devoted to working with you throughout your journey. All programs have  nancial aid options or sliding scale pricing.
-					</p></h2>
+				<div class="row">
+					<div class="container">
+						<h2><?= $programs_text; ?></h2>
+					</div>
 				</div>
 				
 
 				<?php
 				if( have_rows('programs') ):
-					echo '<div class="container">';
-						echo '<h2>Upcoming Events</h2>';
-					echo '</div>';
 					echo '<div class="programs row">';
 						while( have_rows('programs') ) : the_row();
 							$title = get_sub_field('title');
@@ -135,10 +130,17 @@ get_header();
 					echo '</div>';
 				endif;
 				?>
-				<div class="container">
-					<h2><p>
-						We want to be a pillar of support for our community. We want to learn more about you, your family, or your organization to see how Bija can work with you to create strategies that are e ective and meaningful.
-					</p></h2>
+				<div class="row">
+					<div class="container">
+						<h2><?= $community_text; ?></h2>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="container">
+						<h2><?= $closing_text; ?></h2>
+					</div>
 				</div>
 			</div>
 			<footer>

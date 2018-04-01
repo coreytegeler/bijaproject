@@ -75,6 +75,7 @@ a {
   background-position: 0 1.3em;
   line-height: 1.4em;
   font-weight: normal;
+  color: white;
   &:hover {
   	text-decoration: none;
   }
@@ -155,31 +156,31 @@ header {
 }
 main {
 	width: 100%;
+	p {
+		&:nth-child(3n+1) a {
+			background-image: linear-gradient(to bottom, $darkBlue 50%, $darkBlue 50%);
+			&:hover {
+				color: $darkBlue;
+			}
+		}
+		&:nth-child(3n+2) a {
+			background-image: linear-gradient(to bottom, $red 50%, $red 50%);
+			&:hover {
+				color: $red;
+			}
+		}
+		&:nth-child(3n+3) a {
+			background-image: linear-gradient(to bottom, $green 50%, $green 50%);
+			&:hover {
+				color: $green;
+			}
+		}
+	}
 	.row {
 		.col {
 			padding: 0;
 			.inner_content {
 				padding: $xlGap #{$xlGap - $smGap};
-			}
-			p {
-				&:nth-child(3n+1) a {
-					background-image: linear-gradient(to bottom, $darkBlue 50%, $darkBlue 50%);
-					&:hover {
-						color: $darkBlue;
-					}
-				}
-				&:nth-child(3n+2) a {
-					background-image: linear-gradient(to bottom, $red 50%, $red 50%);
-					&:hover {
-						color: $red;
-					}
-				}
-				&:nth-child(3n+3) a {
-					background-image: linear-gradient(to bottom, $green 50%, $green 50%);
-					&:hover {
-						color: $green;
-					}
-				}
 			}
 			&.left {
 				background: $lightBlue;
