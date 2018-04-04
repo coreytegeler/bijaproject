@@ -7,6 +7,7 @@ jQuery ($) ->
 	$intro = $('#intro')
 	$main = $('main')
 	$faders = $main.find('.inner_content')
+	
 	init = () ->
 		adjustHeader()	
 
@@ -21,7 +22,6 @@ jQuery ($) ->
 		leftWidth = $main.find('.left.col').innerWidth()
 		rightWidth = $main.find('.right.col').innerWidth()
 		leftWidthPerc = leftWidth/windowWidth
-		# console.log 'toAlign: '+toAlign
 		if toAlign >= 1
 			$header.addClass('aligned')
 			if toResize <= 1
@@ -44,16 +44,7 @@ jQuery ($) ->
 			$header.removeClass('aligned')
 			logoWidth = 100
 			$faders.css
-					opacity: 0
-
-		# if logoWidth == leftWidth
-		# 	$headerWrap.css
-		# 		height: headerHeight
-		# 	$header.addClass('fixed')
-		# else
-		# 	$headerWrap.css
-		# 		height: 'auto'
-		# 	$header.removeClass('fixed')
+				opacity: 0
 		
 		$logo.css
 			width: logoWidth+'%'
@@ -73,16 +64,16 @@ jQuery ($) ->
 		obj = 
 			t:
 				elem: $logoSvg.children().filter('g:eq(2)')
-				x: -20
+				x: -50
 				y: -100
 			b:
 				elem: $logoSvg.children().filter('g:eq(1)')
 				x: 100
-				y: -80
+				y: -100
 			p:
 				elem: $logoSvg.children().filter('g:eq(0)')
-				x: -80
-				y: 80
+				x: -100
+				y: 100
 		return obj
 
 	getTranslate = (svg) ->
@@ -94,6 +85,17 @@ jQuery ($) ->
 			b[c.shift()] = c
 		return b['translate']
 
+	getSize = () ->
+		bodyBefore = window.getComputedStyle($body[0], ':before')
+		content = bodyBefore.getPropertyValue('content')
+		content = content.replace(/"/g,'')
+
+	isSize = (sizes) ->
+		winSize = getSize()
+		for size in sizes
+			if size == winSize
+				return true
+		return false
 
 	$(window).scroll (e) ->
 		adjustHeader()
@@ -103,3 +105,4 @@ jQuery ($) ->
 
 	$ -> 
 		init()
+		getSize()

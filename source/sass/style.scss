@@ -1,3 +1,4 @@
+$light: white;
 $lightBlue: #e2edff;
 $darkBlue: #015fff;
 $red: #fa453c;
@@ -22,28 +23,41 @@ $smText: 15px;
 $mdText: 35px;
 $lgText: 49px;
 
-@mixin xSmall {
+@mixin xs {
 	@media (min-width: #{$xsWidth}) {
 		@content;
 	}
 }
 
-@mixin small {
+@mixin sm {
 	@media (max-width: #{$smWidth}) {
 		@content;
 	}
 }
 
-@mixin medium {
+@mixin md {
 	@media (max-width: #{$mdWidth}) {
 		@content;
 	}
 }
 
-@mixin large {
+@mixin lg {
 	@media (max-width: #{$lgWidth}) {
 		@content;
 	}
+}
+
+@mixin underline($color, $bg) {
+	text-shadow: 1px 1px $bg, -1px 1px $bg, -1px -1px $bg, 1px -1px $bg;
+  background-image: linear-gradient(90deg, $color 100%, transparent 100%);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+}
+
+@mixin nounderline() {
+	text-shadow: none;
+  background-image: none;
 }
 
 html, body {
@@ -52,44 +66,44 @@ html, body {
 	line-height: 1.3em;
 	color: black;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
 	font-weight: normal;
 	line-height: 1.3em;
 	margin: 0;
 }
 h1 {
 	font-size: $lgText;
-	@include small {
+	@include md {
 	font-size: $mdText;	
 	}
 }
 h2 {
 	font-size: $mdText;
-	@include small {
+	@include md {
 	font-size: $baseText;	
 	}
 }
 h3 {
 	font-size: $baseText;
-	@include small {
+	@include md {
 	font-size: $smText;	
 	}
 }
 h4 {
 	font-size: $smText;
-	@include small {
-	font-size: $xsText;
+	@include md {
+		font-size: $xsText;
 	}
+}
+h5 {
+	font-size: $xsText;
 }
 a {
 	text-decoration: none;
-	background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,.6) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 1.3em;
-  line-height: 1.4em;
+  display: inline;
   font-weight: normal;
-  color: white;
+  color: black;
+  @include underline(black, transparent);
   &:hover {
   	text-decoration: none;
   }
@@ -101,7 +115,7 @@ p {
 	}
 }
 .white {
-	color: white;
+	color: $light;
 }
 .black {
 	color: black;
@@ -120,18 +134,18 @@ p {
 header {
 	width: 100%;
 	padding: $lgGap 0;
-	background: white;
+	background: $light;
 	z-index: 100;
 	position: relative;
 	z-index: 100;
-	@include small {
+	@include md {
 		padding: $xsGap 0;
 	}
 	.container-fluid {
 		padding: 0;
 	}
 	.col-logo, .col-nav {
-		@include small {
+		@include sm {
 			padding: 0 $xxsGap;
 			font-size: $xsText;
 			* {
@@ -149,14 +163,18 @@ header {
 	}
 	.col-nav {
 		display: none !important;
-		@include small {
-		  display: flex !important;
+		@include md {
+		  display: block !important;
+		  opacity: 0;
 		}
 		nav {
 			height: 100%;
 			.col {
 				text-align: center;
 				padding-right: 0;
+				a {
+					@include nounderline();
+				}
 				&:first-of-type {
 					padding: 0;
 				}
@@ -166,14 +184,17 @@ header {
 				&:last-of-type {
 					padding: 0;
 				}
+				@include md {
+					text-align: left;
+				}
 			}
 			form {
 				display: table;
 				margin: auto;
 				position: relative;
-				input[type="email"] {
-					width: 100%;
-					background: white;
+				input {
+					width: calc(100% - 1.5em);
+					background: $light;
 					border: solid black;
 					border-width: 0 0 1px 0;
 					padding: 0;
@@ -181,11 +202,26 @@ header {
 					left: 0;
 					top: 0;
 				}
+				svg {
+					width: 1em;
+					height: 1em;
+					position: absolute;
+					right: 0;
+					top: calc(50% - .5em);
+					fill: black;
+				}
 				span {
 					opacity: 0;
+					padding-right: 1.5em;
+				}
+				@include sm {
+					width: 100%;
+					span,input {
+						width: calc(100% - 1.5em);
+					}
 				}
 			}
-			@include small {
+			@include sm {
 				width: 100%;
 				font-size: $smText;
 			}
@@ -201,27 +237,28 @@ header {
 		left: 0;
 		top: 0;
 		.col-nav {
+			opacity: 1;
 			display: block !important;
 		}
 	}
 }
 main {
 	width: 100%;
-	p {
+	.row .col .inner_content p {
 		&:nth-child(3n+1) a {
-			background-image: linear-gradient(to bottom, $darkBlue 50%, $darkBlue 50%);
+			@include underline($darkBlue, inherit);
 			&:hover {
 				color: $darkBlue;
 			}
 		}
 		&:nth-child(3n+2) a {
-			background-image: linear-gradient(to bottom, $red 50%, $red 50%);
+			@include underline($red, inherit);
 			&:hover {
 				color: $red;
 			}
 		}
 		&:nth-child(3n+3) a {
-			background-image: linear-gradient(to bottom, $green 50%, $green 50%);
+			@include underline($green, inherit);
 			&:hover {
 				color: $green;
 			}
@@ -232,39 +269,14 @@ main {
 			padding: 0;
 			.inner_content {
 				padding: $xlGap #{$xlGap - $smGap};
-				@include medium {
+				@include lg {
+					padding: $lgGap #{$lgGap - $mdGap};
+				}
+				@include md {
 					padding: $mdGap #{$mdGap - $smGap};
 				}
-			}
-			&.left {
-				background: $lightBlue;
-				.container {
-					width: auto;
-					display: table;
-				}
-				strong {
-					text-transform: uppercase;
-					color: black;
-					font-size: $smText;
-				}
 				a {
-					display: inline-block;
-					color: black;
-				}
-			}
-			&.right {
-				background: $darkBlue;
-				color: white;
-				h2 {
-					margin-bottom: $smGap;
-				}
-				h3 {
-					margin-bottom: $xsGap;
-				}
-				h4 {
-					&:nth-of-type(2) {
-						margin-top: $xsGap;
-					}
+					color: $light;
 				}
 				.row { 
 					margin-bottom: $lgGap;
@@ -276,12 +288,95 @@ main {
 						color: $green;
 					}
 				}
+				@include md {
+					.col-12 {
+						margin-bottom: $lgGap;
+					}
+					.cell {
+						margin-bottom: $xsGap;
+						h3 {
+							margin-bottom: 0 !important;
+						}
+					}
+				}
+			}
+			&.left {
+				background: $lightBlue;
+				.inner_content {
+					.container {
+						width: auto;
+						display: table;
+					}
+					strong {
+						text-transform: uppercase;
+						color: black;
+						font-size: $smText;
+					}
+					a {
+						display: inline;
+						color: black;
+						@include underline(black, $lightBlue);
+					}
+				}
+			}
+			&.right {
+				background: $darkBlue;
+				color: $light;
+				.inner_content {
+					a {
+						display: inline;
+						color: $light;
+						@include underline($light, $darkBlue);
+					}
+					h2 {
+						margin-bottom: $smGap;
+					}
+					h3 {
+						margin-bottom: $xsGap;
+					}
+					h4 {
+						&:nth-of-type(2) {
+							margin-top: $xsGap;
+						}
+					}
+				}
 			}
 		}
 		footer {
 			background-color: black;
-			color: white;
+			color: $light;
 			padding: $mdGap;
+			.social {
+				h4 {
+					position: relative;
+					svg {
+						width: 1em;
+						height: 1em;
+						display: inline;
+						fill: $light;
+					}
+				}
+			}
+			@include md {
+				.col-12:not(:last-of-type) {
+					margin-bottom: $mdGap;
+				}
+			}
 		}
+	}
+}
+body::before {
+	display: none;
+	@include xs {
+		content: 'xs';
+	}
+	@include sm {
+		content: 'sm';
+	}
+	@include md {
+		content: 'md';
+	}
+	@include lg {
+		content: 'lg';
 	}
 }

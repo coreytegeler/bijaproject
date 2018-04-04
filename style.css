@@ -4,46 +4,50 @@ html, body {
   line-height: 1.3em;
   color: black; }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-weight: normal;
   line-height: 1.3em;
   margin: 0; }
 
 h1 {
   font-size: 49px; }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     h1 {
       font-size: 35px; } }
 
 h2 {
   font-size: 35px; }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     h2 {
       font-size: 20px; } }
 
 h3 {
   font-size: 20px; }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     h3 {
       font-size: 15px; } }
 
 h4 {
   font-size: 15px; }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     h4 {
       font-size: 10px; } }
 
+h5 {
+  font-size: 10px; }
+
 a {
   text-decoration: none;
-  background-image: -webkit-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.6) 50%);
-  background-image: -o-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.6) 50%);
-  background-image: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.6) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 1.3em;
-  line-height: 1.4em;
+  display: inline;
   font-weight: normal;
-  color: white; }
+  color: black;
+  text-shadow: 1px 1px transparent, -1px 1px transparent, -1px -1px transparent, 1px -1px transparent;
+  background-image: -webkit-linear-gradient(left, black 100%, transparent 100%);
+  background-image: -o-linear-gradient(left, black 100%, transparent 100%);
+  background-image: linear-gradient(90deg, black 100%, transparent 100%);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 1px; }
   a:hover {
     text-decoration: none; }
 
@@ -75,7 +79,7 @@ header {
   z-index: 100;
   position: relative;
   z-index: 100; }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     header {
       padding: 10px 0; } }
   header .container-fluid {
@@ -94,27 +98,33 @@ header {
       overflow: visible !important; }
   header .col-nav {
     display: none !important; }
-    @media (max-width: 576px) {
+    @media (max-width: 768px) {
       header .col-nav {
-        display: -webkit-box !important;
-        display: flex !important; } }
+        display: block !important;
+        opacity: 0; } }
     header .col-nav nav {
       height: 100%; }
       header .col-nav nav .col {
         text-align: center;
         padding-right: 0; }
+        header .col-nav nav .col a {
+          text-shadow: none;
+          background-image: none; }
         header .col-nav nav .col:first-of-type {
           padding: 0; }
         header .col-nav nav .col:nth-of-type(2) {
           padding: 0 5px; }
         header .col-nav nav .col:last-of-type {
           padding: 0; }
+        @media (max-width: 768px) {
+          header .col-nav nav .col {
+            text-align: left; } }
       header .col-nav nav form {
         display: table;
         margin: auto;
         position: relative; }
-        header .col-nav nav form input[type="email"] {
-          width: 100%;
+        header .col-nav nav form input {
+          width: calc(100% - 1.5em);
           background: white;
           border: solid black;
           border-width: 0 0 1px 0;
@@ -122,8 +132,21 @@ header {
           position: absolute;
           left: 0;
           top: 0; }
+        header .col-nav nav form svg {
+          width: 1em;
+          height: 1em;
+          position: absolute;
+          right: 0;
+          top: calc(50% - .5em);
+          fill: black; }
         header .col-nav nav form span {
-          opacity: 0; }
+          opacity: 0;
+          padding-right: 1.5em; }
+        @media (max-width: 576px) {
+          header .col-nav nav form {
+            width: 100%; }
+            header .col-nav nav form span, header .col-nav nav form input {
+              width: calc(100% - 1.5em); } }
       @media (max-width: 576px) {
         header .col-nav nav {
           width: 100%;
@@ -135,64 +158,131 @@ header {
     left: 0;
     top: 0; }
     header.fixed .col-nav {
+      opacity: 1;
       display: block !important; }
 
 main {
   width: 100%; }
-  main p:nth-child(3n+1) a {
-    background-image: -webkit-linear-gradient(top, #015fff 50%, #015fff 50%);
-    background-image: -o-linear-gradient(top, #015fff 50%, #015fff 50%);
-    background-image: linear-gradient(to bottom, #015fff 50%, #015fff 50%); }
-    main p:nth-child(3n+1) a:hover {
+  main .row .col .inner_content p:nth-child(3n+1) a {
+    text-shadow: 1px 1px inherit, -1px 1px inherit, -1px -1px inherit, 1px -1px inherit;
+    background-image: -webkit-linear-gradient(left, #015fff 100%, transparent 100%);
+    background-image: -o-linear-gradient(left, #015fff 100%, transparent 100%);
+    background-image: linear-gradient(90deg, #015fff 100%, transparent 100%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 1px; }
+    main .row .col .inner_content p:nth-child(3n+1) a:hover {
       color: #015fff; }
-  main p:nth-child(3n+2) a {
-    background-image: -webkit-linear-gradient(top, #fa453c 50%, #fa453c 50%);
-    background-image: -o-linear-gradient(top, #fa453c 50%, #fa453c 50%);
-    background-image: linear-gradient(to bottom, #fa453c 50%, #fa453c 50%); }
-    main p:nth-child(3n+2) a:hover {
+  main .row .col .inner_content p:nth-child(3n+2) a {
+    text-shadow: 1px 1px inherit, -1px 1px inherit, -1px -1px inherit, 1px -1px inherit;
+    background-image: -webkit-linear-gradient(left, #fa453c 100%, transparent 100%);
+    background-image: -o-linear-gradient(left, #fa453c 100%, transparent 100%);
+    background-image: linear-gradient(90deg, #fa453c 100%, transparent 100%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 1px; }
+    main .row .col .inner_content p:nth-child(3n+2) a:hover {
       color: #fa453c; }
-  main p:nth-child(3n+3) a {
-    background-image: -webkit-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
-    background-image: -o-linear-gradient(top, #23cc0e 50%, #23cc0e 50%);
-    background-image: linear-gradient(to bottom, #23cc0e 50%, #23cc0e 50%); }
-    main p:nth-child(3n+3) a:hover {
+  main .row .col .inner_content p:nth-child(3n+3) a {
+    text-shadow: 1px 1px inherit, -1px 1px inherit, -1px -1px inherit, 1px -1px inherit;
+    background-image: -webkit-linear-gradient(left, #23cc0e 100%, transparent 100%);
+    background-image: -o-linear-gradient(left, #23cc0e 100%, transparent 100%);
+    background-image: linear-gradient(90deg, #23cc0e 100%, transparent 100%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 1px; }
+    main .row .col .inner_content p:nth-child(3n+3) a:hover {
       color: #23cc0e; }
   main .row .col {
     padding: 0; }
     main .row .col .inner_content {
       padding: 100px 85px; }
+      @media (max-width: 992px) {
+        main .row .col .inner_content {
+          padding: 50px 30px; } }
       @media (max-width: 768px) {
         main .row .col .inner_content {
           padding: 20px 5px; } }
+      main .row .col .inner_content a {
+        color: white; }
+      main .row .col .inner_content .row {
+        margin-bottom: 50px; }
+      main .row .col .inner_content .cell {
+        margin-bottom: 50px; }
+        main .row .col .inner_content .cell .soon::after {
+          content: '*';
+          color: #23cc0e; }
+      @media (max-width: 768px) {
+        main .row .col .inner_content .col-12 {
+          margin-bottom: 50px; }
+        main .row .col .inner_content .cell {
+          margin-bottom: 10px; }
+          main .row .col .inner_content .cell h3 {
+            margin-bottom: 0 !important; } }
     main .row .col.left {
       background: #e2edff; }
-      main .row .col.left .container {
+      main .row .col.left .inner_content .container {
         width: auto;
         display: table; }
-      main .row .col.left strong {
+      main .row .col.left .inner_content strong {
         text-transform: uppercase;
         color: black;
         font-size: 15px; }
-      main .row .col.left a {
-        display: inline-block;
-        color: black; }
+      main .row .col.left .inner_content a {
+        display: inline;
+        color: black;
+        text-shadow: 1px 1px #e2edff, -1px 1px #e2edff, -1px -1px #e2edff, 1px -1px #e2edff;
+        background-image: -webkit-linear-gradient(left, black 100%, transparent 100%);
+        background-image: -o-linear-gradient(left, black 100%, transparent 100%);
+        background-image: linear-gradient(90deg, black 100%, transparent 100%);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 1px; }
     main .row .col.right {
       background: #015fff;
       color: white; }
-      main .row .col.right h2 {
+      main .row .col.right .inner_content a {
+        display: inline;
+        color: white;
+        text-shadow: 1px 1px #015fff, -1px 1px #015fff, -1px -1px #015fff, 1px -1px #015fff;
+        background-image: -webkit-linear-gradient(left, white 100%, transparent 100%);
+        background-image: -o-linear-gradient(left, white 100%, transparent 100%);
+        background-image: linear-gradient(90deg, white 100%, transparent 100%);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 1px; }
+      main .row .col.right .inner_content h2 {
         margin-bottom: 15px; }
-      main .row .col.right h3 {
+      main .row .col.right .inner_content h3 {
         margin-bottom: 10px; }
-      main .row .col.right h4:nth-of-type(2) {
+      main .row .col.right .inner_content h4:nth-of-type(2) {
         margin-top: 10px; }
-      main .row .col.right .row {
-        margin-bottom: 50px; }
-      main .row .col.right .cell {
-        margin-bottom: 50px; }
-        main .row .col.right .cell .soon::after {
-          content: '*';
-          color: #23cc0e; }
   main .row footer {
     background-color: black;
     color: white;
     padding: 20px; }
+    main .row footer .social h4 {
+      position: relative; }
+      main .row footer .social h4 svg {
+        width: 1em;
+        height: 1em;
+        display: inline;
+        fill: white; }
+    @media (max-width: 768px) {
+      main .row footer .col-12:not(:last-of-type) {
+        margin-bottom: 20px; } }
+
+body::before {
+  display: none; }
+  @media (min-width: 0) {
+    body::before {
+      content: 'xs'; } }
+  @media (max-width: 576px) {
+    body::before {
+      content: 'sm'; } }
+  @media (max-width: 768px) {
+    body::before {
+      content: 'md'; } }
+  @media (max-width: 992px) {
+    body::before {
+      content: 'lg'; } }

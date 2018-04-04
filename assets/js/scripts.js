@@ -1,5 +1,5 @@
 jQuery(function($) {
-  var $body, $faders, $header, $headerWrap, $intro, $logo, $logoSvg, $main, adjustHeader, getTranslate, init, logoObj;
+  var $body, $faders, $header, $headerWrap, $intro, $logo, $logoSvg, $main, adjustHeader, getSize, getTranslate, init, isSize, logoObj;
   $body = $('body');
   $header = $('header');
   $headerWrap = $('.header-wrap');
@@ -77,18 +77,18 @@ jQuery(function($) {
     obj = {
       t: {
         elem: $logoSvg.children().filter('g:eq(2)'),
-        x: -20,
+        x: -50,
         y: -100
       },
       b: {
         elem: $logoSvg.children().filter('g:eq(1)'),
         x: 100,
-        y: -80
+        y: -100
       },
       p: {
         elem: $logoSvg.children().filter('g:eq(0)'),
-        x: -80,
-        y: 80
+        x: -100,
+        y: 100
       }
     };
     return obj;
@@ -105,6 +105,23 @@ jQuery(function($) {
     }
     return b['translate'];
   };
+  getSize = function() {
+    var bodyBefore, content;
+    bodyBefore = window.getComputedStyle($body[0], ':before');
+    content = bodyBefore.getPropertyValue('content');
+    return content = content.replace(/"/g, '');
+  };
+  isSize = function(sizes) {
+    var i, len, size, winSize;
+    winSize = getSize();
+    for (i = 0, len = sizes.length; i < len; i++) {
+      size = sizes[i];
+      if (size === winSize) {
+        return true;
+      }
+    }
+    return false;
+  };
   $(window).scroll(function(e) {
     return adjustHeader();
   });
@@ -112,6 +129,7 @@ jQuery(function($) {
     return adjustHeader();
   });
   return $(function() {
-    return init();
+    init();
+    return getSize();
   });
 });
