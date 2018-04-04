@@ -131,7 +131,8 @@ header {
           padding: 0;
           position: absolute;
           left: 0;
-          top: 0; }
+          top: 0;
+          z-index: 100; }
         header .col-nav nav form svg {
           width: 1em;
           height: 1em;
@@ -195,14 +196,18 @@ main {
       color: #23cc0e; }
   main .row .col {
     padding: 0; }
+    main .row .col .container {
+      width: calc(100% - 30px);
+      padding: 0;
+      display: block; }
     main .row .col .inner_content {
       padding: 100px 85px; }
       @media (max-width: 992px) {
         main .row .col .inner_content {
-          padding: 50px 30px; } }
+          padding: 20px 5px; } }
       @media (max-width: 768px) {
         main .row .col .inner_content {
-          padding: 20px 5px; } }
+          padding: 15px 5px; } }
       main .row .col .inner_content a {
         color: white; }
       main .row .col .inner_content .row {
@@ -221,9 +226,6 @@ main {
             margin-bottom: 0 !important; } }
     main .row .col.left {
       background: #e2edff; }
-      main .row .col.left .inner_content .container {
-        width: auto;
-        display: table; }
       main .row .col.left .inner_content strong {
         text-transform: uppercase;
         color: black;

@@ -201,6 +201,7 @@ header {
 					position: absolute;
 					left: 0;
 					top: 0;
+					z-index: 100;
 				}
 				svg {
 					width: 1em;
@@ -267,13 +268,18 @@ main {
 	.row {
 		.col {
 			padding: 0;
+			.container {
+				width: calc(100% - 30px);
+				padding: 0;
+				display: block;
+			}
 			.inner_content {
 				padding: $xlGap #{$xlGap - $smGap};
 				@include lg {
-					padding: $lgGap #{$lgGap - $mdGap};
+					padding: $mdGap #{$mdGap - $smGap};
 				}
 				@include md {
-					padding: $mdGap #{$mdGap - $smGap};
+					padding: $smGap #{$smGap - $xsGap};
 				}
 				a {
 					color: $light;
@@ -303,10 +309,6 @@ main {
 			&.left {
 				background: $lightBlue;
 				.inner_content {
-					.container {
-						width: auto;
-						display: table;
-					}
 					strong {
 						text-transform: uppercase;
 						color: black;
