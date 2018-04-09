@@ -5,8 +5,10 @@ jQuery ($) ->
 	$logo = $('header .col-logo')
 	$logoSvg = $('header svg')
 	$intro = $('#intro')
+	$introCont = $intro.find('.container')
 	$main = $('main')
-	$faders = $main.find('.inner_content')
+	$mainRow = $main.find('.main-row')
+	$faders = $main.find('.inner-content')
 	
 	init = () ->
 		adjustHeader()	
@@ -14,32 +16,42 @@ jQuery ($) ->
 	adjustHeader = () ->
 		scrollY = $(window).scrollTop()
 		windowWidth = $(window).innerWidth()
-		introBottom = $intro.innerHeight()
-		introHalf = introBottom/2
-		toAlign = scrollY/introHalf
-		toResize = toAlign - 1
+		windowHeight = $(window).innerHeight()
+		winSize = getSize()
+		headerTop = $headerWrap.position().top
+		introBottom = $introCont.offset().top + $introCont.innerHeight()
+		mainTop = $main.offset().top
+		toAlign = scrollY/introBottom
+		toResize = scrollY/mainTop
+		resizeFactor = toAlign - 1
 		headerHeight = $header.innerHeight()
 		leftWidth = $main.find('.left.col').innerWidth()
 		rightWidth = $main.find('.right.col').innerWidth()
 		leftWidthPerc = leftWidth/windowWidth
 		if toAlign >= 1
 			$header.addClass('aligned')
-			if toResize <= 1
-				leftGap = rightWidth*toResize
+			resizeFactor = (scrollY - introBottom)/(headerTop - introBottom)
+			if resizeFactor < 1
+				leftGap = rightWidth*resizeFactor
 				logoWidth = ((windowWidth - leftGap)/windowWidth)*100
 				$headerWrap.css
 					height: 'auto'
 				$header.removeClass('fixed')
+				$mainRow.attr('style', '')
+				$main.removeClass('fixed')
 				$faders.css
-					opacity: toResize
+					opacity: resizeFactor
 			else
 				logoWidth = (leftWidth/windowWidth)*100
 				$headerWrap.css
 					height: headerHeight
 				$header.addClass('fixed')
+				$mainRow.css
+					height: windowHeight - headerHeight
+					top: headerHeight
+				$main.addClass('fixed')
 				$faders.css
 					opacity: 1
-
 		else
 			$header.removeClass('aligned')
 			logoWidth = 100
@@ -86,9 +98,9 @@ jQuery ($) ->
 		return b['translate']
 
 	getSize = () ->
-		bodyBefore = window.getComputedStyle($body[0], ':before')
-		content = bodyBefore.getPropertyValue('content')
-		content = content.replace(/"/g,'')
+		bodyBefore = window.getComputedStyle($body[0], '')
+		size = bodyBefore.getPropertyValue('content')
+		size = size.replace(/"/g,'')
 
 	isSize = (sizes) ->
 		winSize = getSize()

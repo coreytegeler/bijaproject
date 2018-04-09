@@ -9,9 +9,9 @@ $services_text = get_field( 'services_text', $post );
 $start_text = get_field( 'start_text', $post );
 $closing_text = get_field( 'closing_text', $post );
 
-$copyright = get_field( 'copyright', 'option' );
-$credits = get_field( 'credits', 'option' );
-$address = get_field( 'address', 'option' );
+$copyright = wpautop( get_field( 'copyright', 'option' ) );
+$credits = wpautop( get_field( 'credits', 'option' ) );
+$address = wpautop( get_field( 'address', 'option' ) );
 $phone = get_field( 'phone', 'option' );
 $email = get_field( 'email', 'option' );
 $instagram = get_field( 'instagram', 'option' );
@@ -34,20 +34,23 @@ $instagram = get_field( 'instagram', 'option' );
 	<header role="header" class="d-flex align-items-center">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-auto col-logo">
-					<?= get_svg( 'logo' ); ?>
+				<div class="col col-md-auto col-logo">
+					<div class="container">
+						<?= get_svg( 'logo' ); ?>
+					</div>
 				</div>
-				<div class="col-12 col-md col-nav">
+				<div class="col col-12 col-md col-nav">
 					<nav class="d-flex align-items-center">
 						<div class="row">
-							<div class="col col-6 col-sm-4">
+							<div class="col col-4">
 								<a href="<?= $email; ?>"><?= $email; ?></a>
 							</div>
-							<div class="col col-6 col-sm-3"><?= $phone; ?></div>
-							<div class="col col-6 col-sm-5">
+							<div class="col col-4">
+								<div><?= $phone; ?></div>
+							</div>
+							<div class="col col-4">
 								<form>
 									<input type="email" placeholder="Get our newsletter" />
-									<span>Get our newsletter</span>
 									<?= get_svg( 'arrow-right' ); ?>
 								</form>
 							</div>
@@ -59,16 +62,17 @@ $instagram = get_field( 'instagram', 'option' );
 	</header>
 </div>
 <main role="main">
-	<div class="main-row row h-100">
+	<div class="wall"></div>
+	<div class="main-row row">
 		<div class="col col-6 col-md-5 left">
-			<div class="inner_content">
+			<div class="inner-content">
 				<div class="container">
 					<h2><?= $links_text; ?></h2>
 				</div>
 			</div>
 		</div>
 		<div class="col col-6 col-md-7 right">
-			<div class="inner_content">
+			<div class="inner-content">
 				<div class="row">
 					<div class="container">
 						<h2><?= $intro_text; ?></h2>

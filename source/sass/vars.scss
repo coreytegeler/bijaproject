@@ -1,0 +1,91 @@
+$light: white;
+$lightBlue: #e2edff;
+$darkBlue: #015fff;
+$red: #fa453c;
+$green: #23cc0e;
+
+$xsWidth: 0;
+$smWidth: 576px;
+$mdWidth: 768px;
+$lgWidth: 992px;
+$xlWidth: 1200px;
+
+$xxsGap: 5px;
+$xsGap: 10px;
+$smGap: 15px;
+$mdGap: 20px;
+$lgGap: 50px;
+$xlGap: 75px;
+
+$baseText: 20px;
+$xsText: 10px;
+$smText: 15px;
+$mdText: 35px;
+$lgText: 49px;
+
+@font-face {
+	font-family: 'GT Walsheim';
+	src: url('fonts/GT-Walsheim-Regular.woff2') format('woff2'),
+		url('fonts/GT-Walsheim-Regular.woff') format('woff');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'GT Walsheim';
+	src: url('fonts/GT-Walsheim-Regular-Oblique.woff2') format('woff2'),
+		url('fonts/GT-Walsheim-Regular-Oblique.woff') format('woff');
+	font-style: oblique;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'GT Walsheim';
+	src: url('fonts/GT-Walsheim-Bold.woff2') format('woff2'),
+			 url('fonts/GT-Walsheim-Bold.woff') format('woff');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'GT Walsheim';
+	src: url('fonts/GT-Walsheim-Bold-Oblique.woff2') format('woff2'),
+			 url('fonts/GT-Walsheim-Bold-Oblique.woff') format('woff');
+	font-weight: bold;
+	font-style: oblique;
+}
+
+@mixin xs {
+	@media (min-width: #{$xsWidth}) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media (max-width: #{$smWidth}) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media (max-width: #{$mdWidth}) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media (max-width: #{$lgWidth}) {
+		@content;
+	}
+}
+
+@mixin underline($color, $bg) {
+	text-shadow: 1px 1px $bg, -1px 1px $bg, -1px -1px $bg, 1px -1px $bg;
+	background-image: linear-gradient(90deg, $color 100%, transparent 100%);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+}
+
+@mixin nounderline() {
+	text-shadow: none;
+	background-image: none;
+}

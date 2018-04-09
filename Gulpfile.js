@@ -11,14 +11,15 @@ var autoprefixer = require('gulp-autoprefixer');
 var replace = require('gulp-replace');
 
 var paths = {
-  sass: './source/sass/*.scss',
+  sass: './source/sass/style.scss',
   coffee: './source/coffee/*.coffee',
 }
 
 var dest = {
   css: './',
   js: './assets/js/',
-  images: './assets/images/'
+  images: './assets/images/',
+  fonts: './assets/fonts/'
 }
 
 gulp.task('compile-sass', function() {
@@ -34,6 +35,7 @@ gulp.task('compile-sass', function() {
     .pipe(autoprefixer(apOptions))
     .pipe(gulpif(argv.prod, rename('*.min.css')))
     .pipe(replace('images/', dest.images))
+    .pipe(replace('fonts/', dest.fonts))
     .pipe(gulp.dest(dest.css))
   .on('end', function() {
     log('Sass done');
