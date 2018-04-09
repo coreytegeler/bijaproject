@@ -107,32 +107,32 @@ header {
 	}
 	.col-logo, .col-nav {
 		@include smText;
-		.container {
-			margin: 0;
-			padding: 0;
+		.inner {
+			padding: 0 #{$xlGap - $smGap};
+			@include lg {
+				padding: 0 5px;
+			}
 		}
 	}
 	.col-logo {
-		width: 100%;
-		padding: 0 #{$xlGap - $smGap};
-		@include lg {
-			padding: 0 #{$mdGap - $smGap};
-		}
-		@include md {
-			padding: 0 #{$smGap - $xsGap};
+		.container {
+			display: table;
+			margin: auto;
 		}
 		svg {
 			width: 100%;
 			height: auto;
+			display: table;
 			overflow: visible !important;
 		}
 	}
 	.col-nav {
 		display: none !important;
 		padding: 0;
-		@include md {
+		@include sm {
 			display: block !important;
-			opacity: 0;
+	    padding-right: 15px;
+	    padding-left: 15px;
 		}
 		.container {
 			height: 100%;
@@ -178,10 +178,6 @@ header {
 				top: calc(50% - .5em);
 				fill: black;
 			}
-			span {
-				opacity: 0;
-				padding-right: 1.5em;
-			}
 			@include sm {
 				width: 100%;
 				span,input {
@@ -211,6 +207,11 @@ header {
 			display: block !important;
 		}
 	}
+	&:not(.fixed) .col-logo {
+		width: auto;
+    max-width: none;
+    flex: 0 0 auto;
+	}
 }
 main {
 	position: relative;
@@ -228,6 +229,9 @@ main {
 		.main-row {
 			position: fixed;
 			left: 0;
+			.col.left,.col.right {
+				height: auto;
+			} 
 		}
 		.wall {
 			display: none;
@@ -295,7 +299,7 @@ main {
 				}
 			}
 			&.left, &.right {
-				height: 100%;
+				height: 100vh;
 				overflow: auto;
 			}
 			&.left {

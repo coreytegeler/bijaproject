@@ -137,29 +137,27 @@ header {
   header .col-logo, header .col-nav {
     font-size: 15px;
     line-height: 1.3em; }
-    header .col-logo .container, header .col-nav .container {
-      margin: 0;
-      padding: 0; }
-  header .col-logo {
+    header .col-logo .inner, header .col-nav .inner {
+      padding: 0 60px; }
+      @media (max-width: 992px) {
+        header .col-logo .inner, header .col-nav .inner {
+          padding: 0 5px; } }
+  header .col-logo .container {
+    display: table;
+    margin: auto; }
+  header .col-logo svg {
     width: 100%;
-    padding: 0 60px; }
-    @media (max-width: 992px) {
-      header .col-logo {
-        padding: 0 5px; } }
-    @media (max-width: 768px) {
-      header .col-logo {
-        padding: 0 5px; } }
-    header .col-logo svg {
-      width: 100%;
-      height: auto;
-      overflow: visible !important; }
+    height: auto;
+    display: table;
+    overflow: visible !important; }
   header .col-nav {
     display: none !important;
     padding: 0; }
-    @media (max-width: 768px) {
+    @media (max-width: 576px) {
       header .col-nav {
         display: block !important;
-        opacity: 0; } }
+        padding-right: 15px;
+        padding-left: 15px; } }
     header .col-nav .container {
       height: 100%;
       padding: 0 60px; }
@@ -202,9 +200,6 @@ header {
         right: 0;
         top: calc(50% - .5em);
         fill: black; }
-      header .col-nav form span {
-        opacity: 0;
-        padding-right: 1.5em; }
       @media (max-width: 576px) {
         header .col-nav form {
           width: 100%; }
@@ -227,6 +222,11 @@ header {
     header.fixed .col-nav {
       opacity: 1;
       display: block !important; }
+  header:not(.fixed) .col-logo {
+    width: auto;
+    max-width: none;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto; }
 
 main {
   position: relative;
@@ -242,6 +242,8 @@ main {
   main.fixed .main-row {
     position: fixed;
     left: 0; }
+    main.fixed .main-row .col.left, main.fixed .main-row .col.right {
+      height: auto; }
   main.fixed .wall {
     display: none; }
   main .row .col .inner-content p:nth-child(3n+1) a {
@@ -305,7 +307,7 @@ main {
           main .row .col .inner-content .cell h3 {
             margin-bottom: 0 !important; } }
     main .row .col.left, main .row .col.right {
-      height: 100%;
+      height: 100vh;
       overflow: auto; }
     main .row .col.left {
       background: #e2edff; }

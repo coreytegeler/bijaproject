@@ -42,6 +42,7 @@ jQuery ($) ->
 				$faders.css
 					opacity: resizeFactor
 			else
+				toResize = 1
 				logoWidth = (leftWidth/windowWidth)*100
 				$headerWrap.css
 					height: headerHeight
@@ -58,9 +59,10 @@ jQuery ($) ->
 			$faders.css
 				opacity: 0
 		
-		if !isSize(['xs', 'sm'])
+		console.log toResize
+		if !isSize(['xs', 'sm']) && toResize < 1
 			$logo.css
-				width: logoWidth+'%'
+				width: Math.floor(logoWidth)+'%'
 		else 
 			$logo.attr('style','')
 

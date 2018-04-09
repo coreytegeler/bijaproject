@@ -34,13 +34,13 @@ $instagram = get_field( 'instagram', 'option' );
 	<header role="header" class="d-flex align-items-center">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col col-6 col-sm-5 col-md-auto col-logo">
-					<div class="container">
+				<div class="col col-6 col-sm-5 col-logo">
+					<div class="inner">
 						<?= get_svg( 'logo' ); ?>
 					</div>
 				</div>
 				<div class="col col-12 col-sm-7 col-nav">
-					<div class="d-flex align-items-center container">
+					<div class="inner d-flex align-items-center">
 						<div class="row">
 							<div class="col col-4">
 								<a href="<?= $email; ?>"><?= $email; ?></a>
