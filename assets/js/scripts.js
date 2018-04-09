@@ -66,9 +66,13 @@ jQuery(function($) {
         opacity: 0
       });
     }
-    $logo.css({
-      width: logoWidth + '%'
-    });
+    if (!isSize(['xs', 'sm'])) {
+      $logo.css({
+        width: logoWidth + '%'
+      });
+    } else {
+      $logo.attr('style', '');
+    }
     if ($header.is('.aligned')) {
       toAlign = 1;
     }
@@ -80,6 +84,10 @@ jQuery(function($) {
       initY = part.y;
       newY = toAlign * -part.y + part.y;
       newX = toAlign * -part.x + part.x;
+      if (isSize(['xs', 'sm'])) {
+        newY = 0;
+        newX = 0;
+      }
       results.push($(part.elem).attr('transform', 'translate(' + newX + ',' + newY + ')'));
     }
     return results;
@@ -127,6 +135,9 @@ jQuery(function($) {
   };
   isSize = function(sizes) {
     var i, len, size, winSize;
+    if (!Array.isArray(sizes)) {
+      sizes = [sizes];
+    }
     winSize = getSize();
     for (i = 0, len = sizes.length; i < len; i++) {
       size = sizes[i];

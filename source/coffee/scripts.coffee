@@ -58,8 +58,11 @@ jQuery ($) ->
 			$faders.css
 				opacity: 0
 		
-		$logo.css
-			width: logoWidth+'%'
+		if !isSize(['xs', 'sm'])
+			$logo.css
+				width: logoWidth+'%'
+		else 
+			$logo.attr('style','')
 
 		if $header.is('.aligned')
 			toAlign = 1
@@ -68,6 +71,9 @@ jQuery ($) ->
 			initY = part.y
 			newY = toAlign * -part.y + part.y
 			newX = toAlign * -part.x + part.x
+			if isSize(['xs','sm'])
+				newY = 0
+				newX = 0
 			$(part.elem).attr('transform','translate('+newX+','+newY+')')
 			
 	logoObj = () ->
@@ -103,6 +109,8 @@ jQuery ($) ->
 		size = size.replace(/"/g,'')
 
 	isSize = (sizes) ->
+		if !Array.isArray(sizes)
+			sizes = [sizes]
 		winSize = getSize()
 		for size in sizes
 			if size == winSize

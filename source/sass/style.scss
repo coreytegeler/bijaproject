@@ -2,19 +2,19 @@
 
 html, body {
 	font-family: 'GT Walsheim';
-	font-size: $baseText;
+	@include baseText;
 	font-weight: normal;
 	line-height: 1.3em;
 	color: black;
 	min-height: 200%;
-	@include sm {
-		content: 'sm';
+	@include lg {
+		content: 'lg';
 	}
 	@include md {
 		content: 'md';
 	}
-	@include lg {
-		content: 'lg';
+	@include sm {
+		content: 'sm';
 	}
 }
 body {
@@ -30,31 +30,31 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 }
 h1 {
-	font-size: $lgText;
+	@include lgText;
 	@include md {
-	font-size: $mdText;	
+	@include mdText;	
 	}
 }
 h2 {
-	font-size: $mdText;
+	@include mdText;
 	@include md {
-	font-size: $baseText;	
+	@include baseText;	
 	}
 }
 h3 {
-	font-size: $baseText;
+	@include baseText;
 	@include md {
-	font-size: $smText;	
+	@include smText;	
 	}
 }
 h4 {
-	font-size: $smText;
+	@include smText;
 	@include md {
-		font-size: $xsText;
+		@include xsText;
 	}
 }
 h5 {
-	font-size: $xsText;
+	@include xsText;
 }
 a {
 	text-decoration: none;
@@ -106,12 +106,10 @@ header {
 		padding: 0;
 	}
 	.col-logo, .col-nav {
-		@include sm {
-			padding: 0 $xxsGap;
-			font-size: $xsText;
-			* {
-				font-size: $xsText;
-			}
+		@include smText;
+		.container {
+			margin: 0;
+			padding: 0;
 		}
 	}
 	.col-logo {
@@ -122,10 +120,6 @@ header {
 		}
 		@include md {
 			padding: 0 #{$smGap - $xsGap};
-			.container {
-				margin: 0;
-				padding: 0;
-			}
 		}
 		svg {
 			width: 100%;
@@ -140,7 +134,7 @@ header {
 			display: block !important;
 			opacity: 0;
 		}
-		nav {
+		.container {
 			height: 100%;
 			padding: 0 #{$xlGap - $smGap};
 			@include lg {
@@ -149,57 +143,57 @@ header {
 			@include md {
 				padding: 0 #{$smGap - $xsGap};
 			}
+		}
+		a {
+			@include nounderline;
+		}
+		.col {
+			padding-right: 0;
+			display: flex;
+			align-content: center;
 			a {
-				@include nounderline;
+				@include nounderline();
 			}
-			.col {
-				padding-right: 0;
-				display: flex;
-				align-content: center;
-				font-size: $smText;
-				a {
-					@include nounderline();
-				}
-				@include md {
-					margin: 0;
-					padding: 0;
-				}
+			@include sm {
+				margin: 0;
+				padding: 0;
 			}
-			form {
-				display: table;
-				position: relative;
-				input {
-					width: calc(100% - 1.5em);
-					background: $light;
-					border: solid black;
-					border-width: 0 0 1px 0;
-					padding: 0;
-					font-size: $smText;
-				}
-				svg {
-					width: 1em;
-					height: 1em;
-					position: absolute;
-					right: 0;
-					top: calc(50% - .5em);
-					fill: black;
-				}
-				span {
-					opacity: 0;
-					padding-right: 1.5em;
-				}
-				@include sm {
-					width: 100%;
-					span,input {
-						width: calc(100% - 1.5em);
-					}
-				}
+		}
+		form {
+			display: table;
+			position: relative;
+			input {
+				width: calc(100% - 1.5em);
+				background: $light;
+				border: solid black;
+				border-width: 0 0 1px 0;
+				padding: 0;
+				@include smText;
+			}
+			svg {
+				width: 1em;
+				height: 1em;
+				position: absolute;
+				right: 0;
+				top: calc(50% - .5em);
+				fill: black;
+			}
+			span {
+				opacity: 0;
+				padding-right: 1.5em;
 			}
 			@include sm {
 				width: 100%;
-				* {
-					font-size: $smText !important;
+				span,input {
+					width: calc(100% - 1.5em);
 				}
+			}
+		}
+		@include md {
+			width: 100%;
+			@include xsText;
+			form input {
+				@include xsText;
 			}
 		}
 	}
@@ -310,7 +304,7 @@ main {
 					strong {
 						text-transform: uppercase;
 						color: black;
-						font-size: $smText;
+						@include smText;
 					}
 					a {
 						display: inline;

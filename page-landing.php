@@ -34,13 +34,13 @@ $instagram = get_field( 'instagram', 'option' );
 	<header role="header" class="d-flex align-items-center">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col col-md-auto col-logo">
+				<div class="col col-6 col-sm-5 col-md-auto col-logo">
 					<div class="container">
 						<?= get_svg( 'logo' ); ?>
 					</div>
 				</div>
-				<div class="col col-12 col-md col-nav">
-					<nav class="d-flex align-items-center">
+				<div class="col col-12 col-sm-7 col-nav">
+					<div class="d-flex align-items-center container">
 						<div class="row">
 							<div class="col col-4">
 								<a href="<?= $email; ?>"><?= $email; ?></a>
@@ -55,7 +55,7 @@ $instagram = get_field( 'instagram', 'option' );
 								</form>
 							</div>
 						</div>
-					</nav>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,14 +64,14 @@ $instagram = get_field( 'instagram', 'option' );
 <main role="main">
 	<div class="wall"></div>
 	<div class="main-row row">
-		<div class="col col-6 col-md-5 left">
+		<div class="col col-6 col-sm-5 left">
 			<div class="inner-content">
 				<div class="container">
 					<h2><?= $links_text; ?></h2>
 				</div>
 			</div>
 		</div>
-		<div class="col col-6 col-md-7 right">
+		<div class="col col-6 col-sm-7 right">
 			<div class="inner-content">
 				<div class="row">
 					<div class="container">

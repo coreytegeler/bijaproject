@@ -23,6 +23,37 @@ $smText: 15px;
 $mdText: 35px;
 $lgText: 49px;
 
+$baseLineHeight: 1.3em;
+$xsLineHeight: 1.3em;
+$smLineHeight: 1.3em;
+$mdLineHeight: 1.3em;
+$lgLineHeight: 1.3em;
+
+@mixin baseText {
+	font-size: $baseText;
+	line-height: $baseLineHeight;
+}
+
+@mixin xsText {
+	font-size: $xsText;
+	line-height: $xsLineHeight;
+}
+
+@mixin smText {
+	font-size: $smText;
+	line-height: $smLineHeight;
+}
+
+@mixin mdText {
+	font-size: $mdText;
+	line-height: $mdLineHeight;
+}
+
+@mixin lgText {
+	font-size: $lgText;
+	line-height: $lgLineHeight;
+}
+
 @font-face {
 	font-family: 'GT Walsheim';
 	src: url('fonts/GT-Walsheim-Regular.woff2') format('woff2'),

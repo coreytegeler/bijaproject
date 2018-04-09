@@ -23,19 +23,20 @@
 html, body {
   font-family: 'GT Walsheim';
   font-size: 20px;
+  line-height: 1.3em;
   font-weight: normal;
   line-height: 1.3em;
   color: black;
   min-height: 200%; }
-  @media (max-width: 576px) {
-    html, body {
-      content: 'sm'; } }
-  @media (max-width: 768px) {
-    html, body {
-      content: 'md'; } }
   @media (max-width: 992px) {
     html, body {
       content: 'lg'; } }
+  @media (max-width: 768px) {
+    html, body {
+      content: 'md'; } }
+  @media (max-width: 576px) {
+    html, body {
+      content: 'sm'; } }
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -47,31 +48,40 @@ h1, h2, h3, h4, h5 {
   margin: 0; }
 
 h1 {
-  font-size: 49px; }
+  font-size: 49px;
+  line-height: 1.3em; }
   @media (max-width: 768px) {
     h1 {
-      font-size: 35px; } }
+      font-size: 35px;
+      line-height: 1.3em; } }
 
 h2 {
-  font-size: 35px; }
+  font-size: 35px;
+  line-height: 1.3em; }
   @media (max-width: 768px) {
     h2 {
-      font-size: 20px; } }
+      font-size: 20px;
+      line-height: 1.3em; } }
 
 h3 {
-  font-size: 20px; }
+  font-size: 20px;
+  line-height: 1.3em; }
   @media (max-width: 768px) {
     h3 {
-      font-size: 15px; } }
+      font-size: 15px;
+      line-height: 1.3em; } }
 
 h4 {
-  font-size: 15px; }
+  font-size: 15px;
+  line-height: 1.3em; }
   @media (max-width: 768px) {
     h4 {
-      font-size: 10px; } }
+      font-size: 10px;
+      line-height: 1.3em; } }
 
 h5 {
-  font-size: 10px; }
+  font-size: 10px;
+  line-height: 1.3em; }
 
 a {
   text-decoration: none;
@@ -124,12 +134,12 @@ header {
       padding: 10px 0; } }
   header .container-fluid {
     padding: 0; }
-  @media (max-width: 576px) {
-    header .col-logo, header .col-nav {
-      padding: 0 5px;
-      font-size: 10px; }
-      header .col-logo *, header .col-nav * {
-        font-size: 10px; } }
+  header .col-logo, header .col-nav {
+    font-size: 15px;
+    line-height: 1.3em; }
+    header .col-logo .container, header .col-nav .container {
+      margin: 0;
+      padding: 0; }
   header .col-logo {
     width: 100%;
     padding: 0 60px; }
@@ -138,10 +148,7 @@ header {
         padding: 0 5px; } }
     @media (max-width: 768px) {
       header .col-logo {
-        padding: 0 5px; }
-        header .col-logo .container {
-          margin: 0;
-          padding: 0; } }
+        padding: 0 5px; } }
     header .col-logo svg {
       width: 100%;
       height: auto;
@@ -153,61 +160,64 @@ header {
       header .col-nav {
         display: block !important;
         opacity: 0; } }
-    header .col-nav nav {
+    header .col-nav .container {
       height: 100%;
       padding: 0 60px; }
       @media (max-width: 992px) {
-        header .col-nav nav {
+        header .col-nav .container {
           padding: 0 5px; } }
       @media (max-width: 768px) {
-        header .col-nav nav {
+        header .col-nav .container {
           padding: 0 5px; } }
-      header .col-nav nav a {
+    header .col-nav a {
+      text-shadow: none;
+      background-image: none; }
+    header .col-nav .col {
+      padding-right: 0;
+      display: -webkit-box;
+      display: flex;
+      align-content: center; }
+      header .col-nav .col a {
         text-shadow: none;
         background-image: none; }
-      header .col-nav nav .col {
-        padding-right: 0;
-        display: -webkit-box;
-        display: flex;
-        align-content: center;
-        font-size: 15px; }
-        header .col-nav nav .col a {
-          text-shadow: none;
-          background-image: none; }
-        @media (max-width: 768px) {
-          header .col-nav nav .col {
-            margin: 0;
-            padding: 0; } }
-      header .col-nav nav form {
-        display: table;
-        position: relative; }
-        header .col-nav nav form input {
-          width: calc(100% - 1.5em);
-          background: white;
-          border: solid black;
-          border-width: 0 0 1px 0;
-          padding: 0;
-          font-size: 15px; }
-        header .col-nav nav form svg {
-          width: 1em;
-          height: 1em;
-          position: absolute;
-          right: 0;
-          top: calc(50% - .5em);
-          fill: black; }
-        header .col-nav nav form span {
-          opacity: 0;
-          padding-right: 1.5em; }
-        @media (max-width: 576px) {
-          header .col-nav nav form {
-            width: 100%; }
-            header .col-nav nav form span, header .col-nav nav form input {
-              width: calc(100% - 1.5em); } }
       @media (max-width: 576px) {
-        header .col-nav nav {
+        header .col-nav .col {
+          margin: 0;
+          padding: 0; } }
+    header .col-nav form {
+      display: table;
+      position: relative; }
+      header .col-nav form input {
+        width: calc(100% - 1.5em);
+        background: white;
+        border: solid black;
+        border-width: 0 0 1px 0;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.3em; }
+      header .col-nav form svg {
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        right: 0;
+        top: calc(50% - .5em);
+        fill: black; }
+      header .col-nav form span {
+        opacity: 0;
+        padding-right: 1.5em; }
+      @media (max-width: 576px) {
+        header .col-nav form {
           width: 100%; }
-          header .col-nav nav * {
-            font-size: 15px !important; } }
+          header .col-nav form span, header .col-nav form input {
+            width: calc(100% - 1.5em); } }
+    @media (max-width: 768px) {
+      header .col-nav {
+        width: 100%;
+        font-size: 10px;
+        line-height: 1.3em; }
+        header .col-nav form input {
+          font-size: 10px;
+          line-height: 1.3em; } }
   header.aligned .col-lg {
     margin: 0; }
   header.fixed {
@@ -302,7 +312,8 @@ main {
       main .row .col.left .inner-content strong {
         text-transform: uppercase;
         color: black;
-        font-size: 15px; }
+        font-size: 15px;
+        line-height: 1.3em; }
       main .row .col.left .inner-content a {
         display: inline;
         color: black;
