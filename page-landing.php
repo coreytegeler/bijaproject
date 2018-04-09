@@ -171,12 +171,12 @@ $instagram = get_field( 'instagram', 'option' );
 			<footer>
 				<div class="row">
 					<div class="col-12 col-md-4">
-						<h4><?= $copyright; ?></h4>
-						<h5><?= $credits; ?></h5>
+						<h4 class="copyright"><?= $copyright; ?></h4>
+						<h5 class="credits"><?= $credits; ?></h5>
 					</div>
 					<div class="col-12 col-md-4">
-						<h4><?= $address; ?></h4>
-						<h4><?= $phone; ?></h4>
+						<h4 class="address"><?= $address; ?></h4>
+						<h4 class="phone"><?= $phone; ?></h4>
 						<h4>
 							<a href="<?= $email; ?>"><?= $email; ?></a>
 						</h4>

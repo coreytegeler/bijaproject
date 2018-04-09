@@ -32,19 +32,25 @@ h1, h2, h3, h4, h5 {
 h1 {
 	@include lgText;
 	@include md {
-	@include mdText;	
+		@include mdText;	
+	}
+	@include sm {
+		@include smText;	
 	}
 }
 h2 {
 	@include mdText;
 	@include md {
-	@include baseText;	
+		@include baseText;	
+	}
+	@include sm {
+		@include smText;	
 	}
 }
 h3 {
 	@include baseText;
 	@include md {
-	@include smText;	
+		@include smText;	
 	}
 }
 h4 {
@@ -83,6 +89,11 @@ p {
 	min-height: 100vh;
 	p {
 		margin: 0;
+	}
+	@include md {
+		h1 {
+
+		}
 	}
 }
 .row {
@@ -346,6 +357,9 @@ main {
 			padding: $mdGap;
 			a {
 				color: $light;
+			}
+			.credits {
+				margin-top: $smGap;
 			}
 			.social {
 				h4 {

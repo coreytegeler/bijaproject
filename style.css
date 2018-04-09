@@ -54,6 +54,10 @@ h1 {
     h1 {
       font-size: 35px;
       line-height: 1.3em; } }
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 15px;
+      line-height: 1.3em; } }
 
 h2 {
   font-size: 35px;
@@ -61,6 +65,10 @@ h2 {
   @media (max-width: 768px) {
     h2 {
       font-size: 20px;
+      line-height: 1.3em; } }
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 15px;
       line-height: 1.3em; } }
 
 h3 {
@@ -351,6 +359,8 @@ main {
     padding: 20px; }
     main .row footer a {
       color: white; }
+    main .row footer .credits {
+      margin-top: 15px; }
     main .row footer .social h4 {
       position: relative; }
       main .row footer .social h4 svg {
