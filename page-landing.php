@@ -89,7 +89,7 @@ $instagram = get_field( 'instagram', 'option' );
 								if( have_rows('address') ):
 									while( have_rows('address') ) : the_row();
 										echo '<div class="address cell">';
-											$title = get_sub_field('title');
+											$title = wpautop( get_sub_field('title') );
 											$subtitle = get_sub_field('subtitle');
 											echo '<h3>'.$title.'</h3>';
 											echo '<h4 class="black">'.$subtitle.'</h4>';
