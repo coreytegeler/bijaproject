@@ -20,14 +20,16 @@ $xlGap: 75px;
 $baseText: 20px;
 $xsText: 10px;
 $smText: 15px;
-$mdText: 35px;
-$lgText: 49px;
+$mdText: 20px;
+$lgText: 35px;
+$xlText: 49px;
 
 $baseLineHeight: 1.3em;
 $xsLineHeight: 1.3em;
 $smLineHeight: 1.3em;
 $mdLineHeight: 1.3em;
 $lgLineHeight: 1.3em;
+$xlLineHeight: 1.3em;
 
 @mixin baseText {
 	font-size: $baseText;
@@ -52,6 +54,11 @@ $lgLineHeight: 1.3em;
 @mixin lgText {
 	font-size: $lgText;
 	line-height: $lgLineHeight;
+}
+
+@mixin xlText {
+	font-size: $xlText;
+	line-height: $xlLineHeight;
 }
 
 @font-face {

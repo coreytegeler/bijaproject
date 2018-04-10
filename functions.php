@@ -1,16 +1,16 @@
 <?php
 show_admin_bar( false );
 // add_theme_support( 'post-thumbnails', array( 'post', 'page', 'event' ) ); 
-
-wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js' );
-wp_register_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js' );
+$ver = 1.8;
+wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js?ver=' . $ver );
+wp_register_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js?ver=' . $ver );
 
 
 function bija_enqueue() {
   wp_enqueue_script( 'jquery' );
   wp_enqueue_script( 'scripts' );
   wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-  wp_enqueue_style( 'style', get_stylesheet_uri(), '', '1.0' );
+  wp_enqueue_style( 'style', get_stylesheet_uri(), '', $ver );
 }
 add_action( 'wp_enqueue_scripts', 'bija_enqueue' );
 

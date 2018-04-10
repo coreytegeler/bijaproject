@@ -172,7 +172,7 @@ $instagram = get_field( 'instagram', 'option' );
 				<div class="row">
 					<div class="col-12 col-md-4">
 						<h4 class="copyright"><?= $copyright; ?></h4>
-						<h5 class="credits"><?= $credits; ?></h5>
+						<h5 class="credits not-sm"><?= $credits; ?></h5>
 					</div>
 					<div class="col-12 col-md-4">
 						<h4 class="address"><?= $address; ?></h4>
@@ -191,6 +191,9 @@ $instagram = get_field( 'instagram', 'option' );
 							</a>
 							</h4>
 						</div>
+					</div>
+					<div class="col-12 col-md-4 only-sm">
+						<h5 class="credits"><?= $credits; ?></h5>
 					</div>
 				</div>
 			</footer>

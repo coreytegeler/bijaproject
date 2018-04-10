@@ -7,6 +7,8 @@ html, body {
 	line-height: 1.3em;
 	color: black;
 	min-height: 200%;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
 	@include lg {
 		content: 'lg';
 	}
@@ -30,12 +32,12 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 }
 h1 {
-	@include lgText;
+	@include xlText;
 	@include md {
-		@include mdText;	
+		@include lgText;	
 	}
 	@include sm {
-		@include smText;	
+		@include mdText;	
 	}
 }
 h2 {
@@ -108,10 +110,13 @@ header {
 	position: relative;
 	z-index: 100;
 	@include lg {
-		padding: $mdGap 0;
+		padding: #{$smGap*2} 0;
 	}
 	@include md {
-		padding: $xsGap 0;
+		padding: #{$smGap + 5px} 0;
+	}
+	.row {
+    align-items: center;
 	}
 	.container-fluid {
 		padding: 0;
@@ -134,6 +139,7 @@ header {
 			width: 100%;
 			height: auto;
 			display: table;
+			position: relative;
 			overflow: visible !important;
 		}
 	}
@@ -142,8 +148,7 @@ header {
 		padding: 0;
 		@include sm {
 			display: block !important;
-	    padding-right: 15px;
-	    padding-left: 15px;
+	    padding: $smGap $smGap 0 $smGap;
 		}
 		.container {
 			height: 100%;
@@ -178,6 +183,7 @@ header {
 				background: $light;
 				border: solid black;
 				border-width: 0 0 1px 0;
+				border-radius: 0;
 				padding: 0;
 				@include smText;
 			}
@@ -225,23 +231,25 @@ header {
 	}
 }
 main {
+	width: 100%;
 	position: relative;
 	.wall {
-		position: absolute;
 		width: 100%;
 		height: 100%;
 		position: absolute;
 		left: 0;
 		top: 0;
 		z-index: 100;
+		@include sm {
+			display: none;
+		}
 	}
-	width: 100%;
 	&.fixed {
 		.main-row {
 			position: fixed;
 			left: 0;
 			.col.left,.col.right {
-				height: auto;
+				height: 100vh;
 			} 
 		}
 		.wall {
@@ -299,7 +307,7 @@ main {
 				}
 				@include md {
 					.col-12 {
-						margin-bottom: $lgGap;
+						margin-bottom: $mdGap;
 					}
 					.cell {
 						margin-bottom: $xsGap;
@@ -311,7 +319,12 @@ main {
 			}
 			&.left, &.right {
 				height: 100vh;
-				overflow: auto;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+				@include sm {
+					height: auto;
+					overflow: hidden;
+				}
 			}
 			&.left {
 				background: $lightBlue;
@@ -358,7 +371,7 @@ main {
 			a {
 				color: $light;
 			}
-			.credits {
+			.credits.not-sm {
 				margin-top: $smGap;
 			}
 			.social {
@@ -378,6 +391,17 @@ main {
 				}
 			}
 		}
+	}
+}
+.only-sm {
+	display: none;
+}
+@include sm {
+	.not-sm {
+		display: none;
+	}
+	.only-sm {
+		display: block;
 	}
 }
 body::before {

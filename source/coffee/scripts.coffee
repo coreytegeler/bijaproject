@@ -47,10 +47,17 @@ jQuery ($) ->
 				$headerWrap.css
 					height: headerHeight
 				$header.addClass('fixed')
-				$mainRow.css
-					height: windowHeight - headerHeight
-					top: headerHeight
-				$main.addClass('fixed')
+				$main.attr('style','')
+				if !isSize(['xs', 'sm'])
+					$main.addClass('fixed')
+					$mainRow.css
+						height: windowHeight - headerHeight
+						top: headerHeight
+				else
+					$main.removeClass('fixed')
+					$mainRow.attr('style','')
+					$main.css
+						height: windowHeight - headerHeight
 				$faders.css
 					opacity: 1
 		else
@@ -59,7 +66,6 @@ jQuery ($) ->
 			$faders.css
 				opacity: 0
 		
-		console.log toResize
 		if !isSize(['xs', 'sm']) && toResize < 1
 			$logo.css
 				width: Math.floor(logoWidth)+'%'
