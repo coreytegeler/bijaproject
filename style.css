@@ -62,7 +62,7 @@ h1 {
       line-height: 1.3em; } }
 
 h2 {
-  font-size: 20px;
+  font-size: 35px;
   line-height: 1.3em; }
   @media (max-width: 768px) {
     h2 {
@@ -148,13 +148,17 @@ header {
   header .container-fluid {
     padding: 0; }
   header .col-logo, header .col-nav {
-    font-size: 15px;
+    font-size: 20px;
     line-height: 1.3em; }
     header .col-logo .inner, header .col-nav .inner {
       padding: 0 60px; }
       @media (max-width: 992px) {
         header .col-logo .inner, header .col-nav .inner {
           padding: 0 5px; } }
+    @media (max-width: 992px) {
+      header .col-logo, header .col-nav {
+        font-size: 15px;
+        line-height: 1.3em; } }
   header .col-logo .container {
     display: table;
     margin: auto; }
@@ -205,8 +209,12 @@ header {
         border-width: 0 0 1px 0;
         border-radius: 0;
         padding: 0;
-        font-size: 15px;
+        font-size: 20px;
         line-height: 1.3em; }
+        @media (max-width: 992px) {
+          header .col-nav form input {
+            font-size: 15px;
+            line-height: 1.3em; } }
       header .col-nav form svg {
         width: 1em;
         height: 1em;
@@ -221,12 +229,7 @@ header {
             width: calc(100% - 1.5em); } }
     @media (max-width: 768px) {
       header .col-nav {
-        width: 100%;
-        font-size: 10px;
-        line-height: 1.3em; }
-        header .col-nav form input {
-          font-size: 10px;
-          line-height: 1.3em; } }
+        width: 100%; } }
   header.aligned .col-lg {
     margin: 0; }
   header.fixed {
@@ -356,24 +359,30 @@ main {
         margin-bottom: 10px; }
       main .row .col.right .inner-content h4:nth-of-type(2) {
         margin-top: 10px; }
-  main .row footer {
-    background-color: black;
-    color: white;
-    padding: 20px; }
-    main .row footer a {
-      color: white; }
-    main .row footer .credits.not-sm {
-      margin-top: 15px; }
-    main .row footer .social h4 {
-      position: relative; }
-      main .row footer .social h4 svg {
-        width: 1em;
-        height: 1em;
-        display: inline;
-        fill: white; }
-    @media (max-width: 768px) {
-      main .row footer .col-12:not(:last-of-type) {
-        margin-bottom: 20px; } }
+      main .row .col.right footer {
+        background-color: black;
+        color: white; }
+        main .row .col.right footer .inner-content a {
+          color: white;
+          text-shadow: 1px 1px black, -1px 1px black, -1px -1px black, 1px -1px black;
+          background-image: -webkit-linear-gradient(left, white 100%, transparent 100%);
+          background-image: -o-linear-gradient(left, white 100%, transparent 100%);
+          background-image: linear-gradient(90deg, white 100%, transparent 100%);
+          background-position: bottom;
+          background-repeat: no-repeat;
+          background-size: 100% 1px; }
+        main .row .col.right footer .credits.not-sm {
+          margin-top: 15px; }
+        main .row .col.right footer .social h4 {
+          position: relative; }
+          main .row .col.right footer .social h4 svg {
+            width: 1em;
+            height: 1em;
+            display: inline;
+            fill: white; }
+        @media (max-width: 768px) {
+          main .row .col.right footer .col-12:not(:last-of-type) {
+            margin-bottom: 20px; } }
 
 .only-sm {
   display: none; }

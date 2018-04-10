@@ -41,9 +41,9 @@ h1 {
 	}
 }
 h2 {
-	@include mdText;
+	@include lgText;
 	@include md {
-		@include baseText;	
+		@include mdText;	
 	}
 	@include sm {
 		@include smText;	
@@ -122,12 +122,15 @@ header {
 		padding: 0;
 	}
 	.col-logo, .col-nav {
-		@include smText;
+		@include mdText;
 		.inner {
 			padding: 0 #{$xlGap - $smGap};
 			@include lg {
 				padding: 0 5px;
 			}
+		}
+		@include lg {
+			@include smText;
 		}
 	}
 	.col-logo {
@@ -185,7 +188,10 @@ header {
 				border-width: 0 0 1px 0;
 				border-radius: 0;
 				padding: 0;
-				@include smText;
+				@include mdText;
+				@include lg {
+					@include smText;
+				}
 			}
 			svg {
 				width: 1em;
@@ -204,10 +210,6 @@ header {
 		}
 		@include md {
 			width: 100%;
-			@include xsText;
-			form input {
-				@include xsText;
-			}
 		}
 	}
 	&.aligned {
@@ -359,32 +361,34 @@ main {
 						}
 					}
 				}
-			}
-		}
-		footer {
-			background-color: black;
-			color: $light;
-			padding: $mdGap;
-			a {
-				color: $light;
-			}
-			.credits.not-sm {
-				margin-top: $smGap;
-			}
-			.social {
-				h4 {
-					position: relative;
-					svg {
-						width: 1em;
-						height: 1em;
-						display: inline;
-						fill: $light;
+				footer {
+					background-color: black;
+					color: $light;
+					.inner-content {
+						a {
+							color: $light;
+							@include underline($light, black);
+						}
 					}
-				}
-			}
-			@include md {
-				.col-12:not(:last-of-type) {
-					margin-bottom: $mdGap;
+					.credits.not-sm {
+						margin-top: $smGap;
+					}
+					.social {
+						h4 {
+							position: relative;
+							svg {
+								width: 1em;
+								height: 1em;
+								display: inline;
+								fill: $light;
+							}
+						}
+					}
+					@include md {
+						.col-12:not(:last-of-type) {
+							margin-bottom: $mdGap;
+						}
+					}
 				}
 			}
 		}

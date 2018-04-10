@@ -42,13 +42,13 @@ $instagram = get_field( 'instagram', 'option' );
 				<div class="col col-12 col-sm-7 col-nav">
 					<div class="inner d-flex align-items-center">
 						<div class="row">
-							<div class="col col-4">
+							<div class="col col-6 col-md-4">
 								<a href="<?= $email; ?>"><?= $email; ?></a>
 							</div>
-							<div class="col col-4">
+							<div class="col col-6 col-md-4">
 								<div><?= $phone; ?></div>
 							</div>
-							<div class="col col-4">
+							<div class="col col-6 col-md-4">
 								<form>
 									<input type="email" placeholder="Get our newsletter" />
 									<?= get_svg( 'arrow-right' ); ?>
@@ -169,34 +169,36 @@ $instagram = get_field( 'instagram', 'option' );
 
 			
 			<footer>
-				<div class="row">
-					<div class="col-12 col-md-4">
-						<h4 class="copyright"><?= $copyright; ?></h4>
-						<h5 class="credits not-sm"><?= $credits; ?></h5>
-					</div>
-					<div class="col-12 col-md-4">
-						<h4 class="address"><?= $address; ?></h4>
-						<h4 class="phone"><?= $phone; ?></h4>
-						<h4>
-							<a href="<?= $email; ?>"><?= $email; ?></a>
-						</h4>
-					</div>
-					<div class="col-12 col-md-4">
-						<div class="social">
-							<a href="<?= $instagram; ?>">
-								<h4>
-									<?= get_svg( 'social-ig' ); ?>
-									<span>Follow us on Instagram</span>
-								</h4>
-							</a>
+				<div class="inner-content">
+					<div class="row">
+						<div class="col-12 col-md-4">
+							<h4 class="copyright"><?= $copyright; ?></h4>
+							<h5 class="credits not-sm"><?= $credits; ?></h5>
+						</div>
+						<div class="col-12 col-md-4">
+							<h4 class="address"><?= $address; ?></h4>
+							<h4 class="phone"><?= $phone; ?></h4>
+							<h4>
+								<a href="<?= $email; ?>"><?= $email; ?></a>
 							</h4>
 						</div>
+						<div class="col-12 col-md-4">
+							<div class="social">
+								<a href="<?= $instagram; ?>">
+									<h4>
+										<?= get_svg( 'social-ig' ); ?>
+										<span>Follow us on Instagram</span>
+									</h4>
+								</a>
+								</h4>
+							</div>
+						</div>
+						<div class="col-12 col-md-4 only-sm">
+							<h5 class="credits"><?= $credits; ?></h5>
+						</div>
 					</div>
-					<div class="col-12 col-md-4 only-sm">
-						<h5 class="credits"><?= $credits; ?></h5>
-					</div>
-				</div>
-			</footer>
+				</footer>
+			</div>
 		</div>
 	</div>
 </main>

@@ -39,28 +39,12 @@ jQuery(function($) {
       if (resizeFactor < 1) {
         leftGap = rightWidth * resizeFactor;
         logoWidth = ((windowWidth - leftGap) / windowWidth) * 100;
-        $headerWrap.css({
-          height: 'auto'
-        });
-        $header.removeClass('fixed');
-        $leftInner.attr('style', '');
-        $leftInner.removeClass('fixed');
         $faders.css({
           opacity: resizeFactor
         });
       } else {
         toResize = 1;
         logoWidth = (leftWidth / windowWidth) * 100;
-        $headerWrap.css({
-          height: headerHeight
-        });
-        $header.addClass('fixed');
-        $leftInner.css({
-          top: headerHeight,
-          width: leftWidth,
-          height: windowHeight - headerHeight
-        });
-        $leftInner.addClass('fixed');
         $faders.css({
           opacity: 1
         });
@@ -72,7 +56,24 @@ jQuery(function($) {
         opacity: 0
       });
     }
-    if (!isSize(['xs', 'sm']) && toResize < 1) {
+    if (headerTop >= scrollY) {
+      $headerWrap.attr('style', '');
+      $header.removeClass('fixed');
+      $leftInner.attr('style', '');
+      $leftInner.removeClass('fixed');
+    } else {
+      $headerWrap.css({
+        height: headerHeight
+      });
+      $header.addClass('fixed');
+      $leftInner.css({
+        top: headerHeight,
+        width: leftWidth,
+        height: windowHeight - headerHeight
+      });
+      $leftInner.addClass('fixed');
+    }
+    if (toResize < 1) {
       $logo.css({
         width: Math.floor(logoWidth) + '%'
       });
@@ -90,10 +91,6 @@ jQuery(function($) {
       initY = part.y;
       newY = toAlign * -part.y + part.y;
       newX = toAlign * -part.x + part.x;
-      if (isSize(['xs', 'sm'])) {
-        newY = 0;
-        newX = 0;
-      }
       results.push($(part.elem).attr('transform', 'translate(' + newX + ',' + newY + ')'));
     }
     return results;
@@ -105,7 +102,7 @@ jQuery(function($) {
     obj = {
       t: {
         elem: $logoSvg.children().filter('g:eq(2)'),
-        x: -50,
+        x: -100,
         y: -100
       },
       b: {

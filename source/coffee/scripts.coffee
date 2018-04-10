@@ -32,31 +32,18 @@ jQuery ($) ->
 		leftWidth = $left.innerWidth()
 		rightWidth = $right.innerWidth()
 		leftWidthPerc = leftWidth/windowWidth
+
 		if toAlign >= 1
 			$header.addClass('aligned')
 			resizeFactor = (scrollY - introBottom)/(headerTop - introBottom)
-
 			if resizeFactor < 1
 				leftGap = rightWidth*resizeFactor
 				logoWidth = ((windowWidth - leftGap)/windowWidth)*100
-				$headerWrap.css
-					height: 'auto'
-				$header.removeClass('fixed')
-				$leftInner.attr('style', '')
-				$leftInner.removeClass('fixed')
 				$faders.css
 					opacity: resizeFactor
 			else
 				toResize = 1
 				logoWidth = (leftWidth/windowWidth)*100
-				$headerWrap.css
-					height: headerHeight
-				$header.addClass('fixed')
-				$leftInner.css
-					top: headerHeight
-					width: leftWidth
-					height: windowHeight - headerHeight
-				$leftInner.addClass('fixed')
 				$faders.css
 					opacity: 1
 		else
@@ -64,8 +51,29 @@ jQuery ($) ->
 			logoWidth = 100
 			$faders.css
 				opacity: 0
+
+		if headerTop >= scrollY
+			$headerWrap.attr('style', '')
+			$header.removeClass('fixed')
+			$leftInner.attr('style', '')
+			$leftInner.removeClass('fixed')
+		else
+			$headerWrap.css
+				height: headerHeight
+			$header.addClass('fixed')
+			$leftInner.css
+				top: headerHeight
+				width: leftWidth
+				height: windowHeight - headerHeight
+			$leftInner.addClass('fixed')
 		
-		if !isSize(['xs', 'sm']) && toResize < 1
+		# if !isSize(['xs', 'sm']) && toResize < 1
+		# 	$logo.css
+		# 		width: Math.floor(logoWidth)+'%'
+		# else 
+		# 	$logo.attr('style','')
+
+		if toResize < 1
 			$logo.css
 				width: Math.floor(logoWidth)+'%'
 		else 
@@ -78,9 +86,9 @@ jQuery ($) ->
 			initY = part.y
 			newY = toAlign * -part.y + part.y
 			newX = toAlign * -part.x + part.x
-			if isSize(['xs','sm'])
-				newY = 0
-				newX = 0
+			# if isSize(['xs','sm'])
+				# newY = 0
+				# newX = 0
 			$(part.elem).attr('transform','translate('+newX+','+newY+')')
 			
 	logoObj = () ->
@@ -89,7 +97,7 @@ jQuery ($) ->
 		obj = 
 			t:
 				elem: $logoSvg.children().filter('g:eq(2)')
-				x: -50
+				x: -100
 				y: -100
 			b:
 				elem: $logoSvg.children().filter('g:eq(1)')
