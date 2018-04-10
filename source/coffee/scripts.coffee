@@ -9,6 +9,10 @@ jQuery ($) ->
 	$main = $('main')
 	$mainRow = $main.find('.main-row')
 	$faders = $main.find('.inner-content')
+	$left = $main.find('.left.col')
+	$leftInner = $left.find('.inner-content')
+	$right = $main.find('.right.col')
+	$rightInner = $right.find('.inner-content')
 	
 	init = () ->
 		adjustHeader()	
@@ -25,20 +29,21 @@ jQuery ($) ->
 		toResize = scrollY/mainTop
 		resizeFactor = toAlign - 1
 		headerHeight = $header.innerHeight()
-		leftWidth = $main.find('.left.col').innerWidth()
-		rightWidth = $main.find('.right.col').innerWidth()
+		leftWidth = $left.innerWidth()
+		rightWidth = $right.innerWidth()
 		leftWidthPerc = leftWidth/windowWidth
 		if toAlign >= 1
 			$header.addClass('aligned')
 			resizeFactor = (scrollY - introBottom)/(headerTop - introBottom)
+
 			if resizeFactor < 1
 				leftGap = rightWidth*resizeFactor
 				logoWidth = ((windowWidth - leftGap)/windowWidth)*100
 				$headerWrap.css
 					height: 'auto'
 				$header.removeClass('fixed')
-				$mainRow.attr('style', '')
-				$main.removeClass('fixed')
+				$leftInner.attr('style', '')
+				$leftInner.removeClass('fixed')
 				$faders.css
 					opacity: resizeFactor
 			else
@@ -47,17 +52,11 @@ jQuery ($) ->
 				$headerWrap.css
 					height: headerHeight
 				$header.addClass('fixed')
-				$main.attr('style','')
-				if !isSize(['xs', 'sm'])
-					$main.addClass('fixed')
-					$mainRow.css
-						height: windowHeight - headerHeight
-						top: headerHeight
-				else
-					$main.removeClass('fixed')
-					$mainRow.attr('style','')
-					$main.css
-						height: windowHeight - headerHeight
+				$leftInner.css
+					top: headerHeight
+					width: leftWidth
+					height: windowHeight - headerHeight
+				$leftInner.addClass('fixed')
 				$faders.css
 					opacity: 1
 		else

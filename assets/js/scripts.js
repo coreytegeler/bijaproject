@@ -1,5 +1,5 @@
 jQuery(function($) {
-  var $body, $faders, $header, $headerWrap, $intro, $introCont, $logo, $logoSvg, $main, $mainRow, adjustHeader, getSize, getTranslate, init, isSize, logoObj;
+  var $body, $faders, $header, $headerWrap, $intro, $introCont, $left, $leftInner, $logo, $logoSvg, $main, $mainRow, $right, $rightInner, adjustHeader, getSize, getTranslate, init, isSize, logoObj;
   $body = $('body');
   $header = $('header');
   $headerWrap = $('.header-wrap');
@@ -10,6 +10,10 @@ jQuery(function($) {
   $main = $('main');
   $mainRow = $main.find('.main-row');
   $faders = $main.find('.inner-content');
+  $left = $main.find('.left.col');
+  $leftInner = $left.find('.inner-content');
+  $right = $main.find('.right.col');
+  $rightInner = $right.find('.inner-content');
   init = function() {
     return adjustHeader();
   };
@@ -26,8 +30,8 @@ jQuery(function($) {
     toResize = scrollY / mainTop;
     resizeFactor = toAlign - 1;
     headerHeight = $header.innerHeight();
-    leftWidth = $main.find('.left.col').innerWidth();
-    rightWidth = $main.find('.right.col').innerWidth();
+    leftWidth = $left.innerWidth();
+    rightWidth = $right.innerWidth();
     leftWidthPerc = leftWidth / windowWidth;
     if (toAlign >= 1) {
       $header.addClass('aligned');
@@ -39,8 +43,8 @@ jQuery(function($) {
           height: 'auto'
         });
         $header.removeClass('fixed');
-        $mainRow.attr('style', '');
-        $main.removeClass('fixed');
+        $leftInner.attr('style', '');
+        $leftInner.removeClass('fixed');
         $faders.css({
           opacity: resizeFactor
         });
@@ -51,20 +55,12 @@ jQuery(function($) {
           height: headerHeight
         });
         $header.addClass('fixed');
-        $main.attr('style', '');
-        if (!isSize(['xs', 'sm'])) {
-          $main.addClass('fixed');
-          $mainRow.css({
-            height: windowHeight - headerHeight,
-            top: headerHeight
-          });
-        } else {
-          $main.removeClass('fixed');
-          $mainRow.attr('style', '');
-          $main.css({
-            height: windowHeight - headerHeight
-          });
-        }
+        $leftInner.css({
+          top: headerHeight,
+          width: leftWidth,
+          height: windowHeight - headerHeight
+        });
+        $leftInner.addClass('fixed');
         $faders.css({
           opacity: 1
         });

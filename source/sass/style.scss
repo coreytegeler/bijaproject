@@ -234,6 +234,7 @@ main {
 	width: 100%;
 	position: relative;
 	.wall {
+		display: none;
 		width: 100%;
 		height: 100%;
 		position: absolute;
@@ -244,18 +245,18 @@ main {
 			display: none;
 		}
 	}
-	&.fixed {
-		.main-row {
-			position: fixed;
-			left: 0;
-			.col.left,.col.right {
-				height: 100vh;
-			} 
-		}
-		.wall {
-			display: none;
-		}
-	}
+	// &.fixed {
+	// 	.main-row {
+	// 		position: fixed;
+	// 		left: 0;
+	// 		.col.left,.col.right {
+	// 			min-height: 100vh;
+	// 		} 
+	// 	}
+	// 	.wall {
+	// 		display: none;
+	// 	}
+	// }
 	.row .col .inner-content p {
 		&:nth-child(3n+1) a {
 			@include underline($darkBlue, inherit);
@@ -305,6 +306,11 @@ main {
 						color: $green;
 					}
 				}
+				&.fixed {
+					position: fixed;
+					overflow-y: auto;
+					-webkit-overflow-scrolling: touch;
+				}
 				@include md {
 					.col-12 {
 						margin-bottom: $mdGap;
@@ -315,15 +321,6 @@ main {
 							margin-bottom: 0 !important;
 						}
 					}
-				}
-			}
-			&.left, &.right {
-				height: 100vh;
-				overflow-y: auto;
-				-webkit-overflow-scrolling: touch;
-				@include sm {
-					height: auto;
-					overflow: hidden;
 				}
 			}
 			&.left {

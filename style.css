@@ -246,6 +246,7 @@ main {
   width: 100%;
   position: relative; }
   main .wall {
+    display: none;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -255,13 +256,6 @@ main {
     @media (max-width: 576px) {
       main .wall {
         display: none; } }
-  main.fixed .main-row {
-    position: fixed;
-    left: 0; }
-    main.fixed .main-row .col.left, main.fixed .main-row .col.right {
-      height: 100vh; }
-  main.fixed .wall {
-    display: none; }
   main .row .col .inner-content p:nth-child(3n+1) a {
     text-shadow: 1px 1px inherit, -1px 1px inherit, -1px -1px inherit, 1px -1px inherit;
     background-image: -webkit-linear-gradient(left, #015fff 100%, transparent 100%);
@@ -315,6 +309,10 @@ main {
         main .row .col .inner-content .cell .soon::after {
           content: '*';
           color: #23cc0e; }
+      main .row .col .inner-content.fixed {
+        position: fixed;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; }
       @media (max-width: 768px) {
         main .row .col .inner-content .col-12 {
           margin-bottom: 20px; }
@@ -322,14 +320,6 @@ main {
           margin-bottom: 10px; }
           main .row .col .inner-content .cell h3 {
             margin-bottom: 0 !important; } }
-    main .row .col.left, main .row .col.right {
-      height: 100vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch; }
-      @media (max-width: 576px) {
-        main .row .col.left, main .row .col.right {
-          height: auto;
-          overflow: hidden; } }
     main .row .col.left {
       background: #e2edff; }
       main .row .col.left .inner-content strong {
