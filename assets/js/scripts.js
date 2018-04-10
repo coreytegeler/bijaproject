@@ -56,7 +56,7 @@ jQuery(function($) {
         opacity: 0
       });
     }
-    if (headerTop >= scrollY) {
+    if (headerTop > scrollY) {
       $headerWrap.attr('style', '');
       $header.removeClass('fixed');
       $leftInner.attr('style', '');

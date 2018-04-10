@@ -52,7 +52,7 @@ jQuery ($) ->
 			$faders.css
 				opacity: 0
 
-		if headerTop >= scrollY
+		if headerTop > scrollY
 			$headerWrap.attr('style', '')
 			$header.removeClass('fixed')
 			$leftInner.attr('style', '')
