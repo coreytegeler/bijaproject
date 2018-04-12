@@ -109,7 +109,7 @@ a {
     text-decoration: none; }
 
 p {
-  margin: 0 0 50px 0; }
+  margin: 0 0 2em 0; }
   p:last-of-type {
     margin: 0; }
 
@@ -159,6 +159,10 @@ header {
       header .col-logo, header .col-nav {
         font-size: 15px;
         line-height: 1.3em; } }
+    @media (max-width: 576px) {
+      header .col-logo, header .col-nav {
+        font-size: 10px;
+        line-height: 1.3em; } }
   header .col-logo .container {
     display: table;
     margin: auto; }
@@ -174,6 +178,7 @@ header {
     @media (max-width: 576px) {
       header .col-nav {
         display: block !important;
+        visibility: hidden;
         padding: 15px 15px 0 15px; } }
     header .col-nav .container {
       height: 100%;
@@ -215,6 +220,10 @@ header {
           header .col-nav form input {
             font-size: 15px;
             line-height: 1.3em; } }
+        @media (max-width: 576px) {
+          header .col-nav form input {
+            font-size: 10px;
+            line-height: 1.3em; } }
       header .col-nav form svg {
         width: 1em;
         height: 1em;
@@ -238,7 +247,8 @@ header {
     top: 0; }
     header.fixed .col-nav {
       opacity: 1;
-      display: block !important; }
+      display: block !important;
+      visibility: visible !important; }
   header:not(.fixed) .col-logo {
     width: auto;
     max-width: none;
@@ -312,6 +322,14 @@ main {
         main .row .col .inner-content .cell .soon::after {
           content: '*';
           color: #23cc0e; }
+        main .row .col .inner-content .cell.soon {
+          color: #23cc0e; }
+          main .row .col .inner-content .cell.soon h3 {
+            display: inline; }
+          main .row .col .inner-content .cell.soon::before {
+            content: '*';
+            color: #23cc0e;
+            display: inline; }
       main .row .col .inner-content.fixed {
         position: fixed;
         overflow-y: auto;
@@ -364,13 +382,16 @@ main {
         color: white; }
         main .row .col.right footer .inner-content a {
           color: white;
-          text-shadow: 1px 1px black, -1px 1px black, -1px -1px black, 1px -1px black;
-          background-image: -webkit-linear-gradient(left, white 100%, transparent 100%);
-          background-image: -o-linear-gradient(left, white 100%, transparent 100%);
-          background-image: linear-gradient(90deg, white 100%, transparent 100%);
-          background-position: bottom;
-          background-repeat: no-repeat;
-          background-size: 100% 1px; }
+          text-shadow: none;
+          background-image: none; }
+          main .row .col.right footer .inner-content a:hover {
+            text-shadow: 1px 1px black, -1px 1px black, -1px -1px black, 1px -1px black;
+            background-image: -webkit-linear-gradient(left, white 100%, transparent 100%);
+            background-image: -o-linear-gradient(left, white 100%, transparent 100%);
+            background-image: linear-gradient(90deg, white 100%, transparent 100%);
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 1px; }
         main .row .col.right footer .credits.not-sm {
           margin-top: 15px; }
         main .row .col.right footer .social h4 {

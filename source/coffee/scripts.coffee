@@ -35,6 +35,7 @@ jQuery ($) ->
 
 		if toAlign >= 1
 			$header.addClass('aligned')
+			toAlign = 1
 			resizeFactor = (scrollY - introBottom)/(headerTop - introBottom)
 			if resizeFactor < 1
 				leftGap = rightWidth*resizeFactor
@@ -55,7 +56,10 @@ jQuery ($) ->
 		if headerTop > scrollY
 			$headerWrap.attr('style', '')
 			$header.removeClass('fixed')
-			$leftInner.attr('style', '')
+			$leftInner.css
+				top: 'auto'
+				width: 'auto'
+				height: 'auto'
 			$leftInner.removeClass('fixed')
 		else
 			$headerWrap.css
@@ -79,8 +83,6 @@ jQuery ($) ->
 		else 
 			$logo.attr('style','')
 
-		if $header.is('.aligned')
-			toAlign = 1
 		for key, part of logoObj()
 			initX = part.x
 			initY = part.y

@@ -1,7 +1,7 @@
 <?php
 show_admin_bar( false );
 // add_theme_support( 'post-thumbnails', array( 'post', 'page', 'event' ) ); 
-$ver = 1.9;
+$ver = '2.0.3';
 wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js?ver=' . $ver );
 wp_register_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js?ver=' . $ver );
 

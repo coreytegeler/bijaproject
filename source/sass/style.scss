@@ -75,7 +75,7 @@ a {
 	}
 }
 p {
-	margin: 0 0 $lgGap 0;
+	margin: 0 0 2em 0;
 	&:last-of-type {
 		margin: 0;
 	}
@@ -132,6 +132,9 @@ header {
 		@include lg {
 			@include smText;
 		}
+		@include sm {
+			@include xsText;
+		}
 	}
 	.col-logo {
 		.container {
@@ -151,6 +154,7 @@ header {
 		padding: 0;
 		@include sm {
 			display: block !important;
+			visibility: hidden;
 	    padding: $smGap $smGap 0 $smGap;
 		}
 		.container {
@@ -192,6 +196,9 @@ header {
 				@include lg {
 					@include smText;
 				}
+				@include sm {
+					@include xsText;
+				}
 			}
 			svg {
 				width: 1em;
@@ -224,6 +231,7 @@ header {
 		.col-nav {
 			opacity: 1;
 			display: block !important;
+			visibility: visible !important;
 		}
 	}
 	&:not(.fixed) .col-logo {
@@ -307,6 +315,17 @@ main {
 						content: '*';
 						color: $green;
 					}
+					&.soon {
+						color: $green;
+						h3 {
+							display: inline;
+						}
+						&::before {
+							content: '*';
+							color: $green;
+							display: inline;
+						}
+					}
 				}
 				&.fixed {
 					position: fixed;
@@ -367,7 +386,10 @@ main {
 					.inner-content {
 						a {
 							color: $light;
-							@include underline($light, black);
+							@include nounderline();
+							&:hover {
+								@include underline($light, black);
+							}
 						}
 					}
 					.credits.not-sm {
