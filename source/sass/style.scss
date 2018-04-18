@@ -289,19 +289,28 @@ main {
 	}
 	.row {
 		.col {
-			padding: 0;
+			// padding: 0;
 			.container {
-				width: calc(100% - 30px);
+				width: 100%;
 				padding: 0;
 				display: block;
 			}
-			.inner-content {
-				padding: $xlGap #{$xlGap - $smGap};
+			.col {
+				padding: 0 $xmGap;
 				@include lg {
-					padding: $mdGap #{$mdGap - $smGap};
+					padding: 0 $mdGap;
 				}
 				@include md {
-					padding: $smGap #{$smGap - $xsGap};
+					padding: 0 $smGap;
+				}
+			}
+			.inner-content {
+				padding: $xlGap #{$xlGap - $xmGap};
+				@include lg {
+					padding: $lgGap #{$lgGap - $mdGap};
+				}
+				@include md {
+					padding: $smGap 0;
 				}
 				a {
 					color: $light;
@@ -344,7 +353,11 @@ main {
 					}
 				}
 			}
+			&.left, &.right {
+				padding: 0;
+			}
 			&.left {
+				// display: none;
 				background: $lightBlue;
 				.inner-content {
 					strong {
@@ -384,10 +397,14 @@ main {
 					background-color: black;
 					color: $light;
 					.inner-content {
+						.row {
+							margin-bottom: 0;
+						}
 						a {
 							color: $light;
 							@include nounderline();
 							&:hover {
+								color: $light;
 								@include underline($light, black);
 							}
 						}

@@ -67,143 +67,165 @@ $instagram = get_field( 'instagram', 'option' );
 		<div class="col col-6 col-sm-5 left">
 			<div class="inner-content">
 				<div class="container">
-					<h2><?= $links_text; ?></h2>
+					<div class="row">
+						<div class="col col-12">
+							<h2><?= $links_text; ?></h2>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col col-6 col-sm-7 right">
 			<div class="inner-content">
-				<div class="row">
-					<div class="container">
-						<h2><?= $intro_text; ?></h2>
+				<div class="container">
+					<div class="row">
+						<div class="col col-12">
+							<h2><?= $intro_text; ?></h2>
+						</div>
 					</div>
 				</div>
 
 				<?php
 				if( have_rows('locations') ):
-					echo '<div class="locations row">';
-						while( have_rows('locations') ) : the_row();
-							$title = get_sub_field('title');
-							echo '<div class="location col-12 col-md-6 col-lg-4">';
-								echo '<h2>'.$title.'</h2>';
-								if( have_rows('address') ):
-									while( have_rows('address') ) : the_row();
-										echo '<div class="address cell">';
-											$title = wpautop( get_sub_field('title') );
-											$subtitle = get_sub_field('subtitle');
-											echo '<h3>'.$title.'</h3>';
-											echo '<h4 class="black">'.$subtitle.'</h4>';
-										echo '</div>';
-									endwhile;
-								endif;
-
-							echo '</div>';
-						endwhile;
+					echo '<div class="container">';
+						echo '<div class="locations row">';
+							while( have_rows('locations') ) : the_row();
+								$title = get_sub_field('title');
+								echo '<div class="location col col-12 col-md-6 col-lg-4">';
+									echo '<h2>'.$title.'</h2>';
+									if( have_rows('address') ):
+										while( have_rows('address') ) : the_row();
+											echo '<div class="address cell">';
+												$title = wpautop( get_sub_field('title') );
+												$subtitle = get_sub_field('subtitle');
+												echo '<h3>'.$title.'</h3>';
+												echo '<h4 class="black">'.$subtitle.'</h4>';
+											echo '</div>';
+										endwhile;
+									endif;
+								echo '</div>';
+							endwhile;
+						echo '</div>';
 					echo '</div>';
 				endif;
 
 
 				if( have_rows('events') ):
 					echo '<div class="container">';
-						echo '<h2>Upcoming Events</h2>';
-					echo '</div>';
-					echo '<div class="events row">';
-						while( have_rows('events') ) : the_row();
-							$title = get_sub_field('title');
-							$subtitle = get_sub_field('subtitle');
-							echo '<div class="event col-12 col-md-6 col-lg-4">';
-								echo '<div class="cell">';
-									echo '<h3 class="">'.$title.'</h3>';
-									echo '<h4 class="black">'.$subtitle.'</h4>';
-								echo '</div>';
+						echo '<div class="row">';
+							echo '<div class="col col-12">';
+								echo '<h2>Upcoming Events</h2>';
 							echo '</div>';
-						endwhile;
+						echo '</div>';
+						echo '<div class="events row">';
+							while( have_rows('events') ) : the_row();
+								$title = get_sub_field('title');
+								$subtitle = get_sub_field('subtitle');
+								echo '<div class="event col col-12 col-md-6 col-lg-4">';
+									echo '<div class="cell">';
+										echo '<h3>'.$title.'</h3>';
+										echo '<h4 class="black">'.$subtitle.'</h4>';
+									echo '</div>';
+								echo '</div>';
+							endwhile;
+						echo '</div>';
 					echo '</div>';
 				endif;
 				?>
 
-				<div class="row">
-					<div class="container">
-						<h2><?= $programs_text; ?></h2>
+				<div class="container">
+					<div class="row">
+						<div class="col col-12">
+							<h2><?= $programs_text; ?></h2>
+						</div>
 					</div>
 				</div>
 				
 
 				<?php
 				if( have_rows('programs') ):
-					echo '<div class="programs row">';
-						while( have_rows('programs') ) : the_row();
-							$title = get_sub_field('title');
-							$subtitle_1 = get_sub_field('subtitle_1');
-							$subtitle_2 = get_sub_field('subtitle_2');
-							$soon = get_sub_field('coming_soon');
-							echo '<div class="program col-12 col-md-6 col-lg-4">';
-								echo '<div class="cell">';
-									echo '<h3 class="'.($soon==true?'soon':'').'">'.$title.'</h3>';
-									echo '<h4 class="black">'.$subtitle_1.'</h4>';
-									echo '<h4>'.$subtitle_2.'</h4>';
+					echo '<div class="container">';
+						echo '<div class="programs row">';
+							while( have_rows('programs') ) : the_row();
+								$title = get_sub_field('title');
+								$subtitle_1 = get_sub_field('subtitle_1');
+								$subtitle_2 = get_sub_field('subtitle_2');
+								$soon = get_sub_field('coming_soon');
+								echo '<div class="program col col-12 col-md-6 col-lg-4">';
+									echo '<div class="cell">';
+										echo '<h3 class="'.($soon==true?'soon':'').'">'.$title.'</h3>';
+										echo '<h4 class="black">'.$subtitle_1.'</h4>';
+										echo '<h4>'.$subtitle_2.'</h4>';
+									echo '</div>';
+								echo '</div>';
+							endwhile;
+							echo '<div class="program soon col col-12 col-md-6 col-lg-4">';
+								echo '<div class="cell soon">';
+									echo '<h3>Coming soon</h3>';
 								echo '</div>';
 							echo '</div>';
-						endwhile;
-						echo '<div class="program soon col-12 col-md-6 col-lg-4">';
-							echo '<div class="cell soon">';
-								echo '<h3>Coming soon</h3>';
-							echo '</div>';
 						echo '</div>';
+					echo '</div>';
 				endif;
 				?>
 
-				<div class="row">
-					<div class="container">
-						<h2><?= $community_text; ?></h2>
+				<div class="container">
+					<div class="row">
+						<div class="col col-12">
+							<h2><?= $community_text; ?></h2>
+						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-12 col-md-4">
-						<h3>Our Services:</h3>
-						<h4><?= $services_text; ?></h4>
-					</div>
-					<div class="col-12 col-md-8">
-						<h3>To Get Started:</h3>
-						<h3><?= $start_text; ?></h3>
+				<div class="container">
+					<div class="row">
+						<div class="col col-12 col-md-4">
+							<h3>Our Services:</h3>
+							<h4><?= $services_text; ?></h4>
+						</div>
+						<div class="col col-12 col-md-8">
+							<h3>To Get Started:</h3>
+							<h3><?= $start_text; ?></h3>
+						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="container">
-						<h2><?= $closing_text; ?></h2>
+				<div class="container">
+					<div class="row">
+						<div class="col col-12">
+							<h2><?= $closing_text; ?></h2>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<footer>
-			<div class="inner-content">
-				<div class="row">
-					<div class="col-12 col-md-4">
-						<h4 class="copyright"><?= $copyright; ?></h4>
-						<h5 class="credits not-sm"><?= $credits; ?></h5>
-					</div>
-					<div class="col-12 col-md-4">
-						<h4 class="address"><?= $address; ?></h4>
-						<h4 class="phone"><?= $phone; ?></h4>
-						<h4>
-							<a href="<?= $email; ?>"><?= $email; ?></a>
-						</h4>
-					</div>
-					<div class="col-12 col-md-4">
-						<div class="social">
-							<a href="<?= $instagram; ?>">
-								<h4>
-									<?= get_svg( 'social-ig' ); ?>
-									<span>Follow us on Instagram</span>
-								</h4>
-							</a>
+			<footer>
+				<div class="inner-content">
+					<div class="row">
+						<div class="col col-12 col-md-4">
+							<h4 class="copyright"><?= $copyright; ?></h4>
+							<h5 class="credits not-sm"><?= $credits; ?></h5>
+						</div>
+						<div class="col col-12 col-md-4">
+							<h4 class="address"><?= $address; ?></h4>
+							<h4 class="phone"><?= $phone; ?></h4>
+							<h4>
+								<a href="mailto:<?= $email; ?>"><?= $email; ?></a>
 							</h4>
 						</div>
-					</div>
-					<div class="col-12 col-md-4 only-sm">
-						<h5 class="credits"><?= $credits; ?></h5>
+						<div class="col col-12 col-md-4">
+							<div class="social">
+								<a href="<?= $instagram; ?>" target="_blank">
+									<h4>
+										<?= get_svg( 'social-ig' ); ?>
+										<span>Follow us on Instagram</span>
+									</h4>
+								</a>
+								</h4>
+							</div>
+						</div>
+						<div class="col col-12 col-md-4 only-sm">
+							<h5 class="credits"><?= $credits; ?></h5>
+						</div>
 					</div>
 				</div>
 			</footer>
